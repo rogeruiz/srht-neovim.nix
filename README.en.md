@@ -1,4 +1,6 @@
-# `neovim.nix` — A custom _Neovim_ configuration using _Nix Cats_ for @rogeruiz
+# `neovim.nix` — A custom _Neovim_ configuration using _Nix Cats_
+
+> for [@rogeruiz][rsr].
 
 > ℹ️ **Info**
 >
@@ -33,8 +35,9 @@ Also you can use any _Neovim_ directories that are loaded on launch:
 - `./plugin` contains the configurations for global plugins.
 - Including `./pack/*/{start,opt}` support to create and maintain plugins inside
   of your configuration.
-- And more can be found in the _Neovim_ runtime path documentation. [Refer to
-  the documentation][doc].
+- And more can be found in the _Neovim_ runtime path documentation.
+  [Refer to the documentation][doc].
 
 [doc]: https://neovim.io/doc/user/options.html#'rtp'
 [es]: https://git.sr.ht/~rogeruiz/neovim.nix/tree/main/README.md
+[rsr]: https://rog.gr/

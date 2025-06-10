@@ -1,4 +1,6 @@
-# Neovim.nix — Una configuración personalizada usando Nix Cats pa' @rogeruiz
+# `neovim.nix` — Una configuración personalizada usando _Nix Cats_
+
+> pa' [@rogeruiz][rsr].
 
 > ℹ️ **Info**
 >
@@ -39,3 +41,4 @@ También se puede usar carpetas que _Neovim_ carga en el arranque como:
 
 [doc]: https://neovim.io/doc/user/options.html#'rtp'
 [en]: https://git.sr.ht/~rogeruiz/neovim.nix/tree/main/README.en.md
+[rsr]: https://rog.gr/
