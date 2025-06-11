@@ -118,6 +118,7 @@
             (builtins.getAttr (categories.colorscheme or "catppuccin") {
               # Theme switcher without creating a new category
               "tokyonight" = tokyonight-nvim;
+              "catppuccin" = catppuccin-nvim;
             }
             );
           # This is obviously a fairly basic usecase for this, but still nice.
