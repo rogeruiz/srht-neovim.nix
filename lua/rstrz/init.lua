@@ -14,6 +14,10 @@ require("lze").register_handlers(require('nixCatsUtils.lzUtils').for_cat)
 require('lze').register_handlers(require('lzextras').lsp)
 -- demonstrated in ./LSPs/init.lua
 
+require("rstrz.segundo-cerebro")
+
+require("rstrz.terminal")
+
 -- NOTE: general plugins
 require("rstrz.plugins")
 

@@ -40,6 +40,7 @@ end
 
 return {
   "alpha-nvim",
+  -- on_plugin = { "telekasten.nvim" },
   after = function()
     local alpha = require("alpha")
     local fortune = require("alpha.fortune")
@@ -66,7 +67,7 @@ return {
         ":Telescope oldfiles<CR>"),
       dashboard.button("d",
         icons.ui.Pencil .. "  Diario",
-        ":Telekasten panel<CR>"),
+        "<cmd> lua require('telekasten').find_notes({ with_live_grep = true })<CR>"),
       dashboard.button("e",
         icons.diagnostics.Todo .. "  Recordatorios",
         ":ToDoTxtTasksOpen<CR>"),

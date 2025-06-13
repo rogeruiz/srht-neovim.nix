@@ -73,6 +73,8 @@
             go
             # dwt1-shell-color-scripts
             # pokemon-colorscripts-mac
+            bottom
+            gh
           ];
           # these names are arbitrary.
           lint = with pkgs; [
@@ -203,6 +205,7 @@
               focus-nvim
               editorconfig-nvim
               vim-illuminate
+              toggleterm-nvim
             ];
             extra = with pkgs.vimPlugins; [
               fidget-nvim

@@ -302,7 +302,7 @@ require('lze').load {
         { "<leader>r_",        hidden = true },
         { "<leader>b",         group = "[b]uscar" },
         { "<leader>s_",        hidden = true },
-        { "<leader>t",         group = "al[t]ernar" },
+        { "<leader>t",         group = "[t]erminal" },
         { "<leader>t_",        hidden = true },
         { "<leader>j",         group = "área de traba[j]o" },
         { "<leader>j_",        hidden = true },
