@@ -8,15 +8,23 @@ alias ayuda := default
 default:
     just --list
 
-[doc('Construir la derivació de Neovim ')]
-build out=".":
-    nix build {{ out }}
+[doc('Construir la derivación de Neovim localmente')]
+build categoria="." *FLAGS:
+    nix build {{ categoria }} {{ FLAGS }}
 
-[doc('Correr Neovim Dev con derivación local')]
-dev: 
-    [[ "{{ path_exists("./dev-result") }}" == "true" ]] || just build '.#neovim-dev --out-link ./dev-result'
-    ./dev-result/bin/nnvim-dev
+[doc('Construir la derivación de Neovim Dev localmente')]
+build-dev:
+    just build '.#neovim-dev' --out-link ./dev-result
 
-[doc('Borrar la derivación dev')]
-dev-clean:
+[doc('Borrar la derivaciones locales')]
+clean:
     rm -rvf ./dev-result
+    rm -rvf ./result
+
+[doc('Correr Neovim con la configuración adentro desde el almacenamiento de Nix')]
+run *ARGS:
+    nix run '.' {{ ARGS }}
+
+[doc('Correr Neovim Dev con la configuración sin envolver la configuración dentro el almacenamiento de Nix')]
+dev *ARGS:
+    nix run '.#neovim-dev' {{ ARGS }}

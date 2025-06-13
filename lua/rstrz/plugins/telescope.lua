@@ -38,7 +38,7 @@ local function find_git_root()
   -- Find the Git root directory from the current file's path
   local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
   if vim.v.shell_error ~= 0 then
-    print("No es un repositorio de git. Buscando en la carpeta de trabajo corriente")
+    print("No es un repositorio de git. Buscando en la carpeta de trabajo actual")
     return cwd
   end
   return git_root
@@ -50,6 +50,7 @@ local function live_grep_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
       search_dirs = { git_root },
+      prompt_title = 'Buscando adentro de la raiz de Git',
     })
   end
 end
@@ -65,53 +66,177 @@ return {
     -- event = "",
     -- ft = "",
     keys = {
-      { "<leader>bM", '<cmd>Telescope notify<CR>', mode = {"n"}, desc = '[Buscar [M]ensajes' },
-      { "<leader>bp",live_grep_git_root, mode = {"n"}, desc = '[B]uscar raiz del [p]royecto git', },
-      { "<leader>/", function()
-        -- Slightly advanced example of overriding default behavior and theme
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, mode = {"n"}, desc = '[/] Buscar difuso en el bufér corriente', },
-      { "<leader>b/", function()
-        require('telescope.builtin').live_grep {
-          grep_open_files = true,
-          prompt_title = 'Busque con Grep en los Archivos Abiertos',
-        }
-      end, mode = {"n"}, desc = '[B]uscar en [/] Archivos Abiertos' },
-      { "<leader><leader>b", function() return require('telescope.builtin').buffers() end, mode = {"n"}, desc = '[ ] Buscar buférs abiertos', },
-      { "<leader>b.", function() return require('telescope.builtin').oldfiles() end, mode = {"n"}, desc = '[B]uscar Archivos Recientes ("." para repetir)', },
-      { "<leader>br", function() return require('telescope.builtin').resume() end, mode = {"n"}, desc = '[B]uscar [R]eanudar', },
-      { "<leader>d", function() return require('telescope.builtin').diagnostics() end, mode = {"n"}, desc = '[B]uscar [D]iagnosticos', },
-      { "<leader>bg", function() return require('telescope.builtin').live_grep() end, mode = {"n"}, desc = '[B]uscar con [G]rep', },
-      { "<leader>bP", function() return require('telescope.builtin').grep_string() end, mode = {"n"}, desc = '[B]uscar [P]alabra corriente', },
-      { "<leader>bt", function() return require('telescope.builtin').builtin() end, mode = {"n"}, desc = '[B]uscar Select [T]elescope', },
-      { "<leader>ba", function() return require('telescope.builtin').find_files() end, mode = {"n"}, desc = '[B]uscar [A]rchivos', },
-      { "<leader>bk", function() return require('telescope.builtin').keymaps() end, mode = {"n"}, desc = '[B]uscar atajos de teclado ([K]eymaps)', },
-      { "<leader>bs", function() return require('telescope.builtin').help_tags() end, mode = {"n"}, desc = '[B]uscar [S]occoro', },
+      { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[Buscar [M]ensajes' },
+      { "<leader>bp", live_grep_git_root,          mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
+      {
+        "<leader>/",
+        function()
+          -- Slightly advanced example of overriding default behavior and theme
+          -- You can pass additional configuration to telescope to change theme, layout, etc.
+          return require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_cursor {
+            previewer = false,
+            prompt_title = 'Busque con fzf en este archivo',
+          })
+        end,
+        mode = { "n" },
+        desc = '[/] Buscar difuso en el bufér actual',
+      },
+      {
+        "<leader>b/",
+        function()
+          return require('telescope.builtin').live_grep {
+            grep_open_files = true,
+            prompt_title = 'Busque con Grep en los Archivos Abiertos',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar en [/] Archivos Abiertos'
+      },
+      {
+        "<leader><leader>b",
+        function()
+          return require('telescope.builtin').buffers {
+            prompt_title = 'Búfers',
+          }
+        end,
+        mode = { "n" },
+        desc = '[ ] Buscar buférs abiertos',
+      },
+      {
+        "<leader>b.",
+        function()
+          return require('telescope.builtin').oldfiles {
+            prompt_title = 'Archivos recientes',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar Archivos Recientes ("." para repetir)',
+      },
+      {
+        "<leader>br",
+        function()
+          return require('telescope.builtin').resume {
+            prompt_title = 'Reanudar de archivos',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar [R]eanudar',
+      },
+      {
+        "<leader>d",
+        function()
+          return require('telescope.builtin').diagnostics {
+            prompt_title = 'Diagnósticos',
+          }
+        end,
+        mode = { "n" },
+        desc =
+        '[B]uscar [D]iagnósticos',
+      },
+      {
+        "<leader>bg",
+        function()
+          return require('telescope.builtin').live_grep {
+            prompt_title = 'Usando rg para encontrar archivos',
+          }
+        end,
+        mode = { "n" },
+        desc =
+        '[B]uscar con [G]rep',
+      },
+      {
+        "<leader>bP",
+        function()
+          return require('telescope.builtin').grep_string(require('telescope.themes').get_cursor({
+            width = { padding = 0.8 },
+            height = { padding = 0.8 },
+            prompt_title = "Buscando en archivos que compartin una palabra",
+            preview_cutoff = 80,
+          }))
+        end,
+        mode = { "n" },
+        desc = '[B]uscar [P]alabra actual',
+      },
+      {
+        "<leader>bt",
+        function()
+          return require('telescope.builtin').builtin {
+            prompt_title = 'Opciones de Telescope',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar Select [T]elescope',
+      },
+      {
+        "<leader>ba",
+        function()
+          return require('telescope.builtin').find_files {
+            hidden = true,
+            prompt_title = 'Buscando archivos',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar [A]rchivos',
+      },
+      {
+        "<leader>bk",
+        function()
+          return require('telescope.builtin').keymaps {
+            prompt_title = 'Buscando atajos de teclado',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar atajos de teclado ([K]eymaps)',
+      },
+      {
+        "<leader>bs",
+        function()
+          return require('telescope.builtin').help_tags {
+            prompt_title = 'Soccoro',
+          }
+        end,
+        mode = { "n" },
+        desc = '[B]uscar [S]occoro',
+      },
     },
     -- colorscheme = "",
-    load = function (name)
-        vim.cmd.packadd(name)
-        vim.cmd.packadd("telescope-fzf-native.nvim")
-        vim.cmd.packadd("telescope-ui-select.nvim")
+    load = function(name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd("telescope-fzf-native.nvim")
+      vim.cmd.packadd("telescope-ui-select.nvim")
     end,
-    after = function (plugin)
+    after = function(plugin)
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
           mappings = {
-            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+            i = {
+              ['<c-enter>'] = 'to_fuzzy_refine',
+              ['<C-u>'] = false,
+              ['<C-d>'] = false,
+            },
+          },
+          theme = "ivy",
+          path_display = {
+            truncate = 3,
+          },
+          layout_strategy = 'center',
+          layout_config = {
+            width = 0.7,
+            preview_cutoff = 40,
+            height = 0.3,
+          },
+          file_ignore_patterns = {
+            "^.git/"
           },
         },
         -- pickers = {}
         extensions = {
+          fzf = {},
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+            require('telescope.themes').get_ivy(),
           },
         },
       }

@@ -65,9 +65,18 @@
             universal-ctags
             ripgrep
             fd
+            tree-sitter
+            nodePackages.typescript
+            nodePackages.typescript-language-server
+            yaml-language-server
+            marksman
+            go
+            # dwt1-shell-color-scripts
+            # pokemon-colorscripts-mac
           ];
           # these names are arbitrary.
           lint = with pkgs; [
+            shellcheck
           ];
           # but you can choose which ones you want
           # per nvim package you export
@@ -82,6 +91,7 @@
           ];
           # and easily check if they are included in lua
           format = with pkgs; [
+            shfmt
           ];
           neonixdev = {
             # also you can do this.
@@ -106,9 +116,11 @@
               nvim-notify
             ];
             extra = [
+              alpha-nvim
               oil-nvim
               nvim-web-devicons
-
+              telekasten-nvim
+              zen-mode-nvim
             ];
           };
           # You can retreive information from the
@@ -153,6 +165,7 @@
           ];
           neonixdev = with pkgs.vimPlugins; [
             lazydev-nvim
+            hmts-nvim
           ];
           general = {
             blink = with pkgs.vimPlugins; [
@@ -181,11 +194,15 @@
             always = with pkgs.vimPlugins; [
               nvim-lspconfig
               lualine-nvim
+              nvim-navic
               gitsigns-nvim
               vim-sleuth
               vim-fugitive
               vim-rhubarb
               nvim-surround
+              focus-nvim
+              editorconfig-nvim
+              vim-illuminate
             ];
             extra = with pkgs.vimPlugins; [
               fidget-nvim
@@ -346,7 +363,8 @@
           settings = {
             suffix-path = true;
             suffix-LD = true;
-            unwrappedCfgPath = "${./.}";
+            wrapRc = false;
+            configDirName = "nix-neovim";
 
             aliases = [ "nix-neovim-dev" "nnvim-dev" ];
 

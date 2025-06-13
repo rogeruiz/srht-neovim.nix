@@ -19,6 +19,9 @@ vim.opt.listchars = {
   precedes = '‹',
 }
 
+vim.o.termguicolors = true;
+vim.o.background = "light"
+
 -- Set highlight on search
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -35,18 +38,25 @@ vim.wo.number = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Fold method
-
-
 -- Indent
 -- vim.o.smarttab = true
 vim.opt.cpoptions:append('I')
 vim.o.expandtab = true
--- vim.o.smartindent = true
+vim.o.smartindent = true
+vim.o.whichwrap = "<,>,h,l"
 -- vim.o.autoindent = true
 -- vim.o.tabstop = 4
 -- vim.o.softtabstop = 4
 -- vim.o.shiftwidth = 4
+
+-- Haga que lavim.o.neuvas búfer aparescan abajo o a la derecha
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+-- Fold method
+vim.o.foldmethod = "expr"
+vim.o.foldlevel = 6
+vim.o.spelllang = "en,es"
 
 -- stops line wrapping from being confusing
 vim.o.breakindent = true
@@ -57,6 +67,7 @@ vim.o.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.showmatch = false
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
@@ -64,7 +75,10 @@ vim.wo.relativenumber = true
 
 -- Decrease update time
 vim.o.updatetime = 250
+vim.o.timeout = true
 vim.o.timeoutlen = 300
+
+vim.o.colorcolumn = "50,72,80,100"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,preview,noselect'
@@ -92,8 +106,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.g.netrw_liststyle=0
-vim.g.netrw_banner=0
+vim.g.netrw_liststyle = 0
+vim.g.netrw_banner = 0
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -121,11 +135,11 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', function ()
-  vim.diagnostic.jump({count=-1, float=true})
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = 'Ir al anterior mensaje de diagnóstico' })
-vim.keymap.set('n', ']d', function ()
-  vim.diagnostic.jump({count=1, float=true})
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = 'Ir al siguiente message de diagnóstico' })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Abrir mensaje diagnóstico flotante' })
@@ -135,12 +149,15 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Abrir list
 vim.o.clipboard = 'unnamed'
 
 -- You shou instead use these keybindings so that they are still easy to use, but dont conflict
-vim.keymap.set({"v", "x", "n"}, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank al portapapeles' })
-vim.keymap.set({"n", "v", "x"}, '<leader>Y', '"+yy', { noremap = true, silent = true, desc = 'Yank linea al portapapeles' })
-vim.keymap.set({"n", "v", "x"}, '<C-a>', 'gg0vG$', { noremap = true, silent = true, desc = 'Seleccionar todo' })
-vim.keymap.set({'n', 'v', 'x'}, '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Pegar desde el portapapeles' })
-vim.keymap.set('i', '<C-p>', '<C-r><C-p>+', { noremap = true, silent = true, desc = 'Pegar desde el portapapeles desde el modo de inserción' })
-vim.keymap.set("x", "<leader>P", '"_dP', { noremap = true, silent = true, desc = 'Pegar sobre la selección sin borrar el registro sin nombre' })
+vim.keymap.set({ "v", "x", "n" }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank al portapapeles' })
+vim.keymap.set({ "n", "v", "x" }, '<leader>Y', '"+yy',
+  { noremap = true, silent = true, desc = 'Yank linea al portapapeles' })
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p',
+  { noremap = true, silent = true, desc = 'Pegar desde el portapapeles' })
+vim.keymap.set('i', '<C-p>', '<C-r><C-p>+',
+  { noremap = true, silent = true, desc = 'Pegar desde el portapapeles desde el modo de inserción' })
+vim.keymap.set("x", "<leader>P", '"_dP',
+  { noremap = true, silent = true, desc = 'Pegar sobre la selección sin borrar el registro sin nombre' })
 
 vim.keymap.set({ "n", "v" }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
