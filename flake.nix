@@ -14,9 +14,9 @@
     #   flake = false;
     # };
 
-    # neovim-nightly-overlay = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    # };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
 
   };
 
@@ -75,6 +75,11 @@
             # pokemon-colorscripts-mac
             bottom
             gh
+
+            ninja
+            cmake
+            gettext
+            curl
           ];
           # these names are arbitrary.
           lint = with pkgs; [
@@ -89,7 +94,8 @@
             gopls
             gotools
             go-tools
-            gccgo
+            gofumpt
+            # gccgo
           ];
           # and easily check if they are included in lua
           format = with pkgs; [
@@ -370,10 +376,11 @@
             configDirName = "nix-neovim";
 
             aliases = [ "nix-neovim-dev" "nnvim-dev" ];
+            hosts.python3.enable = true;
+            hosts.node.enable = true;
 
             # If you wanted nightly, uncomment this, and the flake input.
-            # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-            # Probably add the cache stuff they recommend too.
+            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           categories = {
             markdown = true;
@@ -382,7 +389,8 @@
             lint = true;
             format = true;
             test = true;
-            # go = true; # <- disabled but you could enable it with override or module on install
+            debug = true;
+            go = true; # <- disabled but you could enable it with override or module on install
             lspDebugMode = false;
             themer = true;
             colorscheme = "catppuccin";

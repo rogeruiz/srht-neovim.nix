@@ -28,3 +28,7 @@ run *ARGS:
 [doc('Correr Neovim Dev con la configuración sin envolver la configuración dentro el almacenamiento de Nix')]
 dev *ARGS:
     nix run '.#neovim-dev' {{ ARGS }}
+
+[doc('Actualiza la ultima versión de `neovim-dev`')]
+upgrade-dev *ARGS:
+    nix profile upgrade neovim-dev {{ ARGS }}
