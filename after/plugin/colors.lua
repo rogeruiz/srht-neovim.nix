@@ -44,5 +44,5 @@ vim.cmd([[
   " kitty that do not support background color erase.
   let &t_ut=''
 
-  hi LineNr guifg=#bb9af7
+  " hi LineNr guifg=#bb9af7
 ]])
