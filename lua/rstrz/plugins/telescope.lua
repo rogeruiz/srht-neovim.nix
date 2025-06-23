@@ -59,11 +59,22 @@ return {
   {
     "telescope.nvim",
     for_cat = 'general.telescope',
-    cmd = { "Telescope", "LiveGrepGitRoot" },
+    cmd = {
+      "AlphaReady",
+      "Telescope",
+      "LiveGrepGitRoot"
+    },
     -- NOTE: our on attach function defines keybinds that call telescope.
     -- so, the on_require handler will load telescope when we use those.
-    on_require = { "telescope", },
-    -- event = "",
+    on_require = {
+      "alpha-nvim",
+      "telescope",
+      "nvim-notify"
+    },
+    dep_of = {
+      'alpha-nvim',
+    },
+    event = "DeferredUIEnter",
     -- ft = "",
     keys = {
       { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[Buscar [M]ensajes' },
@@ -229,8 +240,11 @@ return {
             height = 0.3,
           },
           file_ignore_patterns = {
-            "^.git/"
+            ".git/",
           },
+          dynamic_preview_title = true,
+          prompt_title = "Aviso",
+          results_title = "Resultados",
         },
         -- pickers = {}
         extensions = {

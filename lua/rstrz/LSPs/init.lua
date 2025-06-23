@@ -10,7 +10,7 @@ end
 local old_ft_fallback = require('lze').h.lsp.get_ft_fallback()
 require('lze').h.lsp.set_ft_fallback(function(name)
   local lspcfg = nixCats.pawsible({ "allPlugins", "opt", "nvim-lspconfig" }) or
-  nixCats.pawsible({ "allPlugins", "start", "nvim-lspconfig" })
+      nixCats.pawsible({ "allPlugins", "start", "nvim-lspconfig" })
   if lspcfg then
     local ok, cfg = pcall(dofile, lspcfg .. "/lsp/" .. name .. ".lua")
     if not ok then
@@ -110,6 +110,40 @@ require('lze').load {
       filetypes = { "nix" },
     },
   },
+  -- {
+  --   "powershell-nvim",
+  --   for_cat = "pwsh",
+  --   lsp = {
+  --     filetypes = { "ps1" },
+  --     settings = {
+  --     },
+  --
+  --     on_attach = function(client, bufnr)
+  --       -- Enable completion triggered by <c-x><c-o>
+  --       vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
+  --
+  --       -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  --       -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  --       -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  --       -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  --       -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  --       -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  --       -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  --       -- vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+  --       -- vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  --       -- vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+  --       -- vim.keymap.set('n', '<Leader>td', vim.lsp.buf.type_definition, bufopts)
+  --     end,
+  --   },
+  --   load = function(name)
+  --     vim.cmd.packadd(name)
+  --   end,
+  --   after = function(plugin)
+  --     require('powershell').setup({
+  --       bundle_path = vim.env.POWERSHELL_EDITOR_SERVICES_BUNDLE_PATH,
+  --     })
+  --   end,
+  -- },
   {
     "nil_ls",
     -- mason doesn't have nixd

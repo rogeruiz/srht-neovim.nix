@@ -50,19 +50,35 @@ if nixCats('general.extra') then
       ["g\\"] = "actions.toggle_trash",
     },
   })
-  vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, desc = 'Open Parent Directory' })
-  vim.keymap.set("n", "<leader>-", "<cmd>Oil .<CR>", { noremap = true, desc = 'Open nvim root directory' })
+  vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, desc = 'Abrir la carpeta anterior' })
+  vim.keymap.set("n", "<leader>-", "<cmd>Oil .<CR>", { noremap = true, desc = 'Abrir la raiz carpeta de nvim' })
 end
 
 require('lze').load {
+  { import = "rstrz.plugins.snacks", },
+  { import = "rstrz.plugins.alpha", },
   { import = "rstrz.plugins.telescope", },
   { import = "rstrz.plugins.treesitter", },
   { import = "rstrz.plugins.completion", },
   { import = "rstrz.plugins.lualine", },
-  { import = "rstrz.plugins.alpha", },
+  { import = "rstrz.plugins.navic", },
+  { import = "rstrz.plugins.indent_blankline", },
   {
     'focus.nvim',
-    for_cat = 'general.always'
+    for_cat = 'general.always',
+    event = "DeferredUIEnter",
+    after = function(plugin)
+      require("focus").setup({
+        ui = {
+          number = false,
+          relativenumber = false,
+          cursorline = false,
+          cursorcolumn = false,
+          signcolumn = false,
+          winhighlight = false,
+        },
+      })
+    end,
   },
   {
     "markdown-preview.nvim",
@@ -88,7 +104,7 @@ require('lze').load {
     "undotree",
     for_cat = 'general.extra',
     cmd = { "UndotreeToggle", "UndotreeHide", "UndotreeShow", "UndotreeFocus", "UndotreePersistUndo", },
-    keys = { { "<leader>U", "<cmd>UndotreeToggle<CR>", mode = { "n" }, desc = "Undo Tree" }, },
+    keys = { { "<leader>U", "<cmd>UndotreeToggle<CR>", mode = { "n" }, desc = "[U]ndo arbol de cambios" }, },
     before = function(_)
       vim.g.undotree_WindowLayout = 1
       vim.g.undotree_SplitWidth = 40
@@ -100,14 +116,6 @@ require('lze').load {
     event = "DeferredUIEnter",
     after = function(plugin)
       require('Comment').setup()
-    end,
-  },
-  {
-    "indent-blankline.nvim",
-    for_cat = 'general.extra',
-    event = "DeferredUIEnter",
-    after = function(plugin)
-      require("ibl").setup()
     end,
   },
   {
@@ -152,161 +160,6 @@ require('lze').load {
   --     vim.cmd([[hi link @lsp.type.parameter Hlargs]])
   --   end,
   -- },
-  {
-    "gitsigns.nvim",
-    for_cat = 'general.always',
-    event = "DeferredUIEnter",
-    -- cmd = { "" },
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
-    after = function(plugin)
-      local ui = require('rstrz.icons')
-      require('gitsigns').setup({
-        signs                        = {
-          add          = { text = ui.add_thickest, },
-          change       = { text = ui.change_thickest, },
-          delete       = { text = ui.delete_thickest, },
-          topdelete    = { text = ui.topdelete_thickest, },
-          changedelete = { text = ui.changedelete_thickest, },
-          untracked    = { text = ui.untracked_thickest, },
-        },
-        signs_staged                 = {
-          add          = { text = ui.add_thickest, },
-          change       = { text = ui.change_thickest, },
-          delete       = { text = ui.delete_thickest, },
-          topdelete    = { text = ui.topdelete_thickest, },
-          changedelete = { text = ui.changedelete_thickest, },
-        },
-        signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
-        numhl                        = true,  -- Toggle with `:Gitsigns toggle_numhl`
-        linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
-        word_diff                    = true,  -- Toggle with `:Gitsigns toggle_word_diff`
-        watch_gitdir                 = {
-          interval = 1000,
-          follow_files = true,
-        },
-        auto_attach                  = true,
-        attach_to_untracked          = true,
-        current_line_blame           = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-        current_line_blame_opts      = {
-          virt_text          = true,
-          virt_text_pos      = 'eol', -- 'eol' | 'overlay' | 'right_align'
-          delay              = 1000,
-          ignore_whitespace  = false,
-          virt_text_priority = 100,
-        },
-        current_line_blame_formatter = ' <author>, <author_time:%R> 󰍩 <summary>',
-        sign_priority                = 6,
-        update_debounce              = 100,
-        status_formatter             = nil, -- Use default
-        max_file_length              = 40000,
-        preview_config               = {
-          -- Options passed to nvim_open_win
-          border   = "single",
-          style    = "minimal",
-          relative = "cursor",
-          row      = 0,
-          col      = 1,
-        },
-
-        on_attach                    = function(bufnr)
-          local gs = package.loaded.gitsigns
-
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
-          -- Navigation
-          map({ 'n', 'v' }, ']c', function()
-            if vim.wo.diff then
-              return ']c'
-            end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'Brinca al proximo hunk' })
-
-          map({ 'n', 'v' }, '[c', function()
-            if vim.wo.diff then
-              return '[c'
-            end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'Brinca al hunk anterior' })
-
-          -- Actions
-          -- visual mode
-          map('v', '<leader>hs', function()
-            gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { desc = 'stage git hunk' })
-          map('v', '<leader>hr', function()
-            gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { desc = 'reset git hunk' })
-          -- normal mode
-          map('n', '<leader>gs', gs.stage_hunk, { desc = 'git hunk en el escenario' })
-          map('n', '<leader>gr', gs.reset_hunk, { desc = 'git hunk reiniciado' })
-          map('n', '<leader>gS', gs.stage_buffer, { desc = 'git búfer en el escenario' })
-          map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'deshacer hunk en el escenario' })
-          map('n', '<leader>gR', gs.reset_buffer, { desc = 'git búfer reiniciado' })
-          map('n', '<leader>gp', gs.preview_hunk, { desc = 'vista previa del git hunk' })
-          map('n', '<leader>gb', function()
-            gs.blame_line { full = false }
-          end, { desc = 'git culpa de la línea' })
-          map('n', '<leader>gd', gs.diffthis, { desc = 'git diff against index' })
-          map('n', '<leader>gD', function()
-            gs.diffthis '~'
-          end, { desc = 'git diferencia desde el ultimo compromiso' })
-
-          -- Toggles
-          map('n', '<leader>gtb', gs.toggle_current_line_blame, { desc = 'alternar la culpa de línea git' })
-          map('n', '<leader>gtd', gs.toggle_deleted, { desc = 'alternar mostrar borrados git' })
-
-          -- Text object
-          map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'selecionar git hunk' })
-        end,
-      })
-      vim.cmd([[hi GitSignsAdd guifg=#04de21]])
-      vim.cmd([[hi GitSignsChange guifg=#83fce6]])
-      vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
-    end,
-  },
-  {
-    "which-key.nvim",
-    for_cat = 'general.extra',
-    -- cmd = { "" },
-    event = "DeferredUIEnter",
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
-    after = function(plugin)
-      require('which-key').setup({
-      })
-      require('which-key').add {
-        { "<leader><leader>",  group = "comandos pa' búfer" },
-        { "<leader><leader>_", hidden = true },
-        { "<leader>c",         group = "[c]ódigo" },
-        { "<leader>c_",        hidden = true },
-        { "<leader>d",         group = "[d]ocumento" },
-        { "<leader>d_",        hidden = true },
-        { "<leader>g",         group = "[g]it" },
-        { "<leader>g_",        hidden = true },
-        { "<leader>m",         group = "[m]arkdown" },
-        { "<leader>m_",        hidden = true },
-        { "<leader>r",         group = "[r]enombrar" },
-        { "<leader>r_",        hidden = true },
-        { "<leader>b",         group = "[b]uscar" },
-        { "<leader>s_",        hidden = true },
-        { "<leader>t",         group = "[t]erminal" },
-        { "<leader>t_",        hidden = true },
-        { "<leader>j",         group = "área de traba[j]o" },
-        { "<leader>j_",        hidden = true },
-      }
-    end,
-  },
+  { import = "rstrz.plugins.gitsigns" },
+  { import = "rstrz.plugins.which-key" },
 }
