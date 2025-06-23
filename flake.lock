@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-colorizer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715313687,
+        "narHash": "sha256-gjO89Sx335PqVgceM9DBfcVozNjovC8KML1OZCRNMGw=",
+        "owner": "norcalli",
+        "repo": "nvim-colorizer.lua",
+        "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "norcalli",
+        "repo": "nvim-colorizer.lua",
+        "type": "github"
+      }
+    },
     "plugins-indent-rainbowline": {
       "flake": false,
       "locked": {
@@ -83,6 +99,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-colorizer": "plugins-colorizer",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
         "plugins-powershell-nvim": "plugins-powershell-nvim"
