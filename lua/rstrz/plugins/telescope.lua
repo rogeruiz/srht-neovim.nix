@@ -77,7 +77,7 @@ return {
     event = "DeferredUIEnter",
     -- ft = "",
     keys = {
-      { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[Buscar [M]ensajes' },
+      { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[B]uscar [M]ensajes en notificaciones' },
       { "<leader>bp", live_grep_git_root,          mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
       {
         "<leader>/",
