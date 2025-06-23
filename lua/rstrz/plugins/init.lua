@@ -63,6 +63,7 @@ require('lze').load {
   { import = "rstrz.plugins.lualine", },
   { import = "rstrz.plugins.navic", },
   { import = "rstrz.plugins.indent_blankline", },
+  { import = "rstrz.plugins.colorizer", },
   {
     'focus.nvim',
     for_cat = 'general.always',

@@ -25,9 +25,14 @@
     };
 
     "plugins-indent-rainbowline" = {
-        url = "github:TheGLander/indent-rainbowline.nvim";
-        flake = false;
-      };
+      url = "github:TheGLander/indent-rainbowline.nvim";
+      flake = false;
+    };
+
+    "plugins-colorizer" = {
+      url = "github:norcalli/nvim-colorizer.lua";
+      flake = false;
+    };
 
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
@@ -257,6 +262,7 @@
               indent-blankline-nvim
               pkgs.neovimPlugins.indent-rainbowline
               vim-startuptime
+              pkgs.neovimPlugins.colorizer
               # If it was included in your flake inputs as plugins-hlargs,
               # this would be how to add that plugin in your config.
               # pkgs.neovimPlugins.hlargs
