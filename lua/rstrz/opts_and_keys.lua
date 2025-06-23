@@ -142,6 +142,25 @@ vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = 'Ir al siguiente message de diagnóstico' })
 
+local diagnostics = require('rstrz.icons').diagnostics
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.HINT] = diagnostics.Hint,
+      [vim.diagnostic.severity.INFO] = diagnostics.Information,
+      [vim.diagnostic.severity.ERROR] = diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = diagnostics.Warning,
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
+  },
+})
+
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Abrir mensaje diagnóstico flotante' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Abrir lista de diagnóstico' })
 

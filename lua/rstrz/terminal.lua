@@ -58,8 +58,8 @@ require('lze').load {
       local cpu_usage = Terminal:new(merge_options(dash_config, {
         cmd = 'btm --default_widget_type cpu --expanded --current_usage --hide_avg_cpu',
         float_opts = {
-          width = 64,
-          height = 22,
+          width = 70,
+          height = 21,
         },
       }))
 
@@ -68,6 +68,8 @@ require('lze').load {
       local git = Terminal:new(merge_options(logs_config, {
         direction = 'vertical',
         goback = 0,
+        display_name = 'Acciónes de Git',
+        auto_scroll = true,
       }))
       local gh = Terminal:new(merge_options(dash_config, {}))
 

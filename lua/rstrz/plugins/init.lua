@@ -32,7 +32,7 @@ if nixCats('general.extra') then
       "mtime",
     },
     keymaps = {
-      ["g?"] = "actions.show_help",
+      ["g?"] = { "actions.show_help", desc = "Mostrar ayuda" },
       ["<CR>"] = "actions.select",
       ["<C-v>"] = "actions.select_vsplit",
       ["<C-x>"] = "actions.select_split",

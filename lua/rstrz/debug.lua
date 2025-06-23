@@ -116,4 +116,13 @@ require('lze').load {
       require("dap-go").setup()
     end,
   },
+  -- README: Esto no esta configurado correctamente por ahorra.
+  -- {
+  --   "nvim-dap-powershell",
+  --   for_cat = { cat = 'debug.pwsh', default = false },
+  --   on_plugin = { 'nvim-dap' },
+  --   after = function(plugin)
+  --     require('dap-powershell').setup()
+  --   end,
+  -- },
 }
