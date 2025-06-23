@@ -14,9 +14,24 @@
     #   flake = false;
     # };
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+    "plugins-nvim-dap-powershell" = {
+      url = "github:Willem-J-an/nvim-dap-powershell";
+      flake = false;
     };
+
+    "plugins-powershell-nvim" = {
+      url = "github:TheLeoP/powershell.nvim";
+      flake = false;
+    };
+
+    "plugins-indent-rainbowline" = {
+        url = "github:TheGLander/indent-rainbowline.nvim";
+        flake = false;
+      };
+
+    # neovim-nightly-overlay = {
+    #   url = "github:nix-community/neovim-nightly-overlay";
+    # };
 
   };
 
@@ -70,7 +85,7 @@
             nodePackages.typescript-language-server
             yaml-language-server
             marksman
-            go
+
             # dwt1-shell-color-scripts
             # pokemon-colorscripts-mac
             bottom
@@ -89,13 +104,27 @@
           # per nvim package you export
           debug = with pkgs; {
             go = [ delve ];
+            pwsh = [ delve ];
           };
+          pwsh = with pkgs; [
+            powershell-editor-services
+          ];
           go = with pkgs; [
+            go
             gopls
             gotools
             go-tools
             gofumpt
             # gccgo
+          ];
+          rust = with pkgs; [
+            openssl
+            pkg-config
+            cargo-deny
+            cargo-edit
+            cargo-watch
+            rust-analyzer
+
           ];
           # and easily check if they are included in lua
           format = with pkgs; [
@@ -161,6 +190,8 @@
               nvim-dap-virtual-text
             ];
             go = [ nvim-dap-go ];
+            pwsh = [ pkgs.neovimPlugins.nvim-dap-powershell ];
+            rust = [ pkgs.lldb ];
           };
           lint = with pkgs.vimPlugins; [
             nvim-lint
@@ -174,6 +205,9 @@
           neonixdev = with pkgs.vimPlugins; [
             lazydev-nvim
             hmts-nvim
+          ];
+          pwsh = with pkgs; [
+            neovimPlugins.powershell-nvim
           ];
           general = {
             blink = with pkgs.vimPlugins; [
@@ -212,6 +246,7 @@
               editorconfig-nvim
               vim-illuminate
               toggleterm-nvim
+              snacks-nvim
             ];
             extra = with pkgs.vimPlugins; [
               fidget-nvim
@@ -220,6 +255,7 @@
               comment-nvim
               undotree
               indent-blankline-nvim
+              pkgs.neovimPlugins.indent-rainbowline
               vim-startuptime
               # If it was included in your flake inputs as plugins-hlargs,
               # this would be how to add that plugin in your config.
@@ -251,6 +287,9 @@
             subtest2 = {
               CATTESTVAR3 = "It didn't work!";
             };
+          };
+          pwsh = {
+            POWERSHELL_EDITOR_SERVICES_BUNDLE_PATH = "${pkgs.powershell-editor-services}";
           };
         };
 
@@ -291,6 +330,9 @@
           ];
           debug = [
             [ "debug" "default" ]
+          ];
+          pwsh = [
+            [ "debug" "pwsh" ] # yes it has to be a list of lists
           ];
           go = [
             [ "debug" "go" ] # yes it has to be a list of lists
@@ -380,7 +422,7 @@
             hosts.node.enable = true;
 
             # If you wanted nightly, uncomment this, and the flake input.
-            neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+            # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           categories = {
             markdown = true;
@@ -391,6 +433,8 @@
             test = true;
             debug = true;
             go = true; # <- disabled but you could enable it with override or module on install
+            pwsh = true;
+            # rust = true;
             lspDebugMode = false;
             themer = true;
             colorscheme = "catppuccin";

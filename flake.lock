@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-indent-rainbowline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733179713,
+        "narHash": "sha256-dSXNtbyPY5ZWT/RCYsmy/swgErJm7zSfaDd5J+15wYc=",
+        "owner": "TheGLander",
+        "repo": "indent-rainbowline.nvim",
+        "rev": "572e8157de85d7af3f0085b5c74c059518900649",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TheGLander",
+        "repo": "indent-rainbowline.nvim",
+        "type": "github"
+      }
+    },
     "plugins-nvim-dap-powershell": {
       "flake": false,
       "locked": {
@@ -67,6 +83,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-indent-rainbowline": "plugins-indent-rainbowline",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
         "plugins-powershell-nvim": "plugins-powershell-nvim"
       }
