@@ -64,6 +64,11 @@ require('lze').load {
   { import = "rstrz.plugins.navic", },
   { import = "rstrz.plugins.indent_blankline", },
   { import = "rstrz.plugins.colorizer", },
+  { import = "rstrz.plugins.autopairs", },
+  { import = "rstrz.plugins.matchup", },
+  { import = "rstrz.plugins.ufo", },
+  { import = "rstrz.plugins.trouble", },
+  { import = "rstrz.plugins.todo-comments", },
   {
     'focus.nvim',
     for_cat = 'general.always',

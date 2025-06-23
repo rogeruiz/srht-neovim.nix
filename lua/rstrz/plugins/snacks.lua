@@ -4,12 +4,11 @@ return {
   event = "DeferredUIEnter",
   after = function(plugin)
     require('snacks').setup {
-      animate = { enabled = false },
-      -- animate = {
-      --   duration = 15,
-      --   fps = 30,
-      --   easing = "outSine",
-      -- },
+      animate = {
+        duration = 20,
+        fps = 26,
+        easing = "outSine",
+      },
       bigfile = { enabled = true },
       dashboard = { enabled = false },
       explorer = { enabled = true },

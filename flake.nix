@@ -263,6 +263,13 @@
               pkgs.neovimPlugins.indent-rainbowline
               vim-startuptime
               pkgs.neovimPlugins.colorizer
+              nvim-autopairs
+              vim-matchup
+              trouble-nvim
+              todo-comments-nvim
+
+              nvim-ufo
+              promise-async
               # If it was included in your flake inputs as plugins-hlargs,
               # this would be how to add that plugin in your config.
               # pkgs.neovimPlugins.hlargs
