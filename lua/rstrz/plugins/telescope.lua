@@ -56,210 +56,209 @@ local function live_grep_git_root()
 end
 
 return {
-  {
-    "telescope.nvim",
-    for_cat = 'general.telescope',
-    cmd = {
-      "AlphaReady",
-      "Telescope",
-      "LiveGrepGitRoot"
-    },
-    -- NOTE: our on attach function defines keybinds that call telescope.
-    -- so, the on_require handler will load telescope when we use those.
-    on_require = {
-      "alpha-nvim",
-      "telescope",
-      "nvim-notify"
-    },
-    dep_of = {
-      'alpha-nvim',
-    },
-    event = "DeferredUIEnter",
-    -- ft = "",
-    keys = {
-      { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[B]uscar [M]ensajes en notificaciones' },
-      { "<leader>bp", live_grep_git_root,          mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
-      {
-        "<leader>/",
-        function()
-          -- Slightly advanced example of overriding default behavior and theme
-          -- You can pass additional configuration to telescope to change theme, layout, etc.
-          return require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_cursor {
-            previewer = false,
-            prompt_title = 'Busque con fzf en este archivo',
-          })
-        end,
-        mode = { "n" },
-        desc = '[/] Buscar difuso en el bufér actual',
-      },
-      {
-        "<leader>b/",
-        function()
-          return require('telescope.builtin').live_grep {
-            grep_open_files = true,
-            prompt_title = 'Busque con Grep en los Archivos Abiertos',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar en [/] Archivos Abiertos'
-      },
-      {
-        "<leader><leader>b",
-        function()
-          return require('telescope.builtin').buffers {
-            prompt_title = 'Búfers',
-          }
-        end,
-        mode = { "n" },
-        desc = '[ ] Buscar buférs abiertos',
-      },
-      {
-        "<leader>b.",
-        function()
-          return require('telescope.builtin').oldfiles {
-            prompt_title = 'Archivos recientes',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar Archivos Recientes ("." para repetir)',
-      },
-      {
-        "<leader>br",
-        function()
-          return require('telescope.builtin').resume {
-            prompt_title = 'Reanudar de archivos',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar [R]eanudar',
-      },
-      {
-        "<leader>d",
-        function()
-          return require('telescope.builtin').diagnostics {
-            prompt_title = 'Diagnósticos',
-          }
-        end,
-        mode = { "n" },
-        desc =
-        '[B]uscar [D]iagnósticos',
-      },
-      {
-        "<leader>bg",
-        function()
-          return require('telescope.builtin').live_grep {
-            prompt_title = 'Usando rg para encontrar archivos',
-          }
-        end,
-        mode = { "n" },
-        desc =
-        '[B]uscar con [G]rep',
-      },
-      {
-        "<leader>bP",
-        function()
-          return require('telescope.builtin').grep_string(require('telescope.themes').get_cursor({
-            width = { padding = 0.8 },
-            height = { padding = 0.8 },
-            prompt_title = "Buscando en archivos que compartin una palabra",
-            preview_cutoff = 80,
-          }))
-        end,
-        mode = { "n" },
-        desc = '[B]uscar [P]alabra actual',
-      },
-      {
-        "<leader>bt",
-        function()
-          return require('telescope.builtin').builtin {
-            prompt_title = 'Opciones de Telescope',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar Select [T]elescope',
-      },
-      {
-        "<leader>ba",
-        function()
-          return require('telescope.builtin').find_files {
-            hidden = true,
-            prompt_title = 'Buscando archivos',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar [A]rchivos',
-      },
-      {
-        "<leader>bk",
-        function()
-          return require('telescope.builtin').keymaps {
-            prompt_title = 'Buscando atajos de teclado',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar atajos de teclado ([K]eymaps)',
-      },
-      {
-        "<leader>bs",
-        function()
-          return require('telescope.builtin').help_tags {
-            prompt_title = 'Soccoro',
-          }
-        end,
-        mode = { "n" },
-        desc = '[B]uscar [S]occoro',
-      },
-    },
-    -- colorscheme = "",
-    load = function(name)
-      vim.cmd.packadd(name)
-      vim.cmd.packadd("telescope-fzf-native.nvim")
-      vim.cmd.packadd("telescope-ui-select.nvim")
-    end,
-    after = function(plugin)
-      require('telescope').setup {
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        defaults = {
-          mappings = {
-            i = {
-              ['<c-enter>'] = 'to_fuzzy_refine',
-              ['<C-u>'] = false,
-              ['<C-d>'] = false,
-            },
-          },
-          theme = "ivy",
-          path_display = {
-            truncate = 3,
-          },
-          layout_strategy = 'center',
-          layout_config = {
-            width = 0.7,
-            preview_cutoff = 40,
-            height = 0.3,
-          },
-          file_ignore_patterns = {
-            ".git/",
-          },
-          dynamic_preview_title = true,
-          prompt_title = "Aviso",
-          results_title = "Resultados",
-        },
-        -- pickers = {}
-        extensions = {
-          fzf = {},
-          ['ui-select'] = {
-            require('telescope.themes').get_ivy(),
-          },
-        },
-      }
-
-      -- Enable telescope extensions, if they are installed
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
-
-      vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
-    end,
+  "telescope.nvim",
+  for_cat = 'general.telescope',
+  cmd = {
+    "AlphaReady",
+    "Telescope",
+    "LiveGrepGitRoot"
   },
+  -- NOTE: our on attach function defines keybinds that call telescope.
+  -- so, the on_require handler will load telescope when we use those.
+  on_require = {
+    "alpha-nvim",
+    "telescope",
+    "nvim-notify",
+    "notify"
+  },
+  dep_of = {
+    'alpha-nvim',
+  },
+  event = "DeferredUIEnter",
+  -- ft = "",
+  keys = {
+    { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[B]uscar [M]ensajes en notificaciones' },
+    { "<leader>bp", live_grep_git_root,          mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
+    {
+      "<leader>/",
+      function()
+        -- Slightly advanced example of overriding default behavior and theme
+        -- You can pass additional configuration to telescope to change theme, layout, etc.
+        return require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_cursor {
+          previewer = false,
+          prompt_title = 'Busque con fzf en este archivo',
+        })
+      end,
+      mode = { "n" },
+      desc = '[/] Buscar difuso en el bufér actual',
+    },
+    {
+      "<leader>b/",
+      function()
+        return require('telescope.builtin').live_grep {
+          grep_open_files = true,
+          prompt_title = 'Busque con Grep en los Archivos Abiertos',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar en [/] Archivos Abiertos'
+    },
+    {
+      "<leader><leader>b",
+      function()
+        return require('telescope.builtin').buffers {
+          prompt_title = 'Búfers',
+        }
+      end,
+      mode = { "n" },
+      desc = '[ ] Buscar buférs abiertos',
+    },
+    {
+      "<leader>b.",
+      function()
+        return require('telescope.builtin').oldfiles {
+          prompt_title = 'Archivos recientes',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar Archivos Recientes ("." para repetir)',
+    },
+    {
+      "<leader>br",
+      function()
+        return require('telescope.builtin').resume {
+          prompt_title = 'Reanudar de archivos',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar [R]eanudar',
+    },
+    {
+      "<leader>d",
+      function()
+        return require('telescope.builtin').diagnostics {
+          prompt_title = 'Diagnósticos',
+        }
+      end,
+      mode = { "n" },
+      desc =
+      '[B]uscar [D]iagnósticos',
+    },
+    {
+      "<leader>bg",
+      function()
+        return require('telescope.builtin').live_grep {
+          prompt_title = 'Usando rg para encontrar archivos',
+        }
+      end,
+      mode = { "n" },
+      desc =
+      '[B]uscar con [G]rep',
+    },
+    {
+      "<leader>bP",
+      function()
+        return require('telescope.builtin').grep_string(require('telescope.themes').get_cursor({
+          width = { padding = 0.8 },
+          height = { padding = 0.8 },
+          prompt_title = "Buscando en archivos que compartin una palabra",
+          preview_cutoff = 80,
+        }))
+      end,
+      mode = { "n" },
+      desc = '[B]uscar [P]alabra actual',
+    },
+    {
+      "<leader>bt",
+      function()
+        return require('telescope.builtin').builtin {
+          prompt_title = 'Opciones de Telescope',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar Select [T]elescope',
+    },
+    {
+      "<leader>ba",
+      function()
+        return require('telescope.builtin').find_files {
+          hidden = true,
+          prompt_title = 'Buscando archivos',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar [A]rchivos',
+    },
+    {
+      "<leader>bk",
+      function()
+        return require('telescope.builtin').keymaps {
+          prompt_title = 'Buscando atajos de teclado',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar atajos de teclado ([K]eymaps)',
+    },
+    {
+      "<leader>bs",
+      function()
+        return require('telescope.builtin').help_tags {
+          prompt_title = 'Soccoro',
+        }
+      end,
+      mode = { "n" },
+      desc = '[B]uscar [S]occoro',
+    },
+  },
+  -- colorscheme = "",
+  load = function(name)
+    vim.cmd.packadd(name)
+    vim.cmd.packadd("telescope-fzf-native.nvim")
+    vim.cmd.packadd("telescope-ui-select.nvim")
+  end,
+  after = function(plugin)
+    require('telescope').setup {
+      -- You can put your default mappings / updates / etc. in here
+      --  All the info you're looking for is in `:help telescope.setup()`
+      --
+      defaults = {
+        mappings = {
+          i = {
+            ['<c-enter>'] = 'to_fuzzy_refine',
+            ['<C-u>'] = false,
+            ['<C-d>'] = false,
+          },
+        },
+        theme = "ivy",
+        path_display = {
+          truncate = 3,
+        },
+        layout_strategy = 'center',
+        layout_config = {
+          width = 0.7,
+          preview_cutoff = 40,
+          height = 0.3,
+        },
+        file_ignore_patterns = {
+          ".git/",
+        },
+        dynamic_preview_title = true,
+        prompt_title = "Aviso",
+        results_title = "Resultados",
+      },
+      -- pickers = {}
+      extensions = {
+        fzf = {},
+        ['ui-select'] = {
+          require('telescope.themes').get_ivy(),
+        },
+      },
+    }
+
+    -- Enable telescope extensions, if they are installed
+    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
+
+    vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+  end,
 }
