@@ -103,12 +103,69 @@ require('lze').load {
     },
   },
   {
-    "rnix",
-    -- mason doesn't have nixd
-    enabled = not catUtils.isNixCats,
-    lsp = {
-      filetypes = { "nix" },
+    "typescript-tools.nvim",
+    for_cat = "ui-work",
+    ft = {
+      "typescriptreact",
+      "javascriptriptreact"
     },
+    load = function(name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd('plenary.nvim')
+      vim.cmd.packadd('nvim-lspconfig')
+    end,
+    after = function(_)
+      require('typescript-tools').setup {
+        settings = {},
+      }
+    end
+  },
+  {
+    'emmet_language_server',
+    for_cat = 'ui-work',
+    lsp = {
+      filetypes = { "astro", "css", "eruby", "html", "htmlangular",
+      "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte",
+      "templ", "typescriptreact", "vue" },
+    },
+  },
+  {
+    'tailwindcss',
+    for_cat = 'ui-work',
+    lsp = {
+      filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade",
+        "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir",
+        "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars",
+        "hbs", "html", "htmlangular", "html-eex", "heex", "jade", "leaf",
+        "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php",
+        "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss",
+        "stylus", "sugarss", "javascript", "javascriptreact", "reason",
+        "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ" },
+      settings = {
+        tailwindCSS = {
+          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+          includeLanguages = {
+            eelixir = "html-eex",
+            elixir = "phoenix-heex",
+            eruby = "erb",
+            heex = "phoenix-heex",
+            htmlangular = "html",
+            templ = "html"
+          },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning"
+          },
+          validate = true
+        }
+      },
+    },
+
   },
   -- {
   --   "powershell-nvim",

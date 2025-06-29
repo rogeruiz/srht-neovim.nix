@@ -18,6 +18,9 @@ require("rstrz.segundo-cerebro")
 
 require("rstrz.terminal")
 
+-- La configuración para interactuar con bancos de datos.
+require("rstrz.banco-de-datos")
+
 -- NOTE: general plugins
 require("rstrz.plugins")
 

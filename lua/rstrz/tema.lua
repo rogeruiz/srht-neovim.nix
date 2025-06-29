@@ -10,12 +10,10 @@ if nixCats('themer.catppuccin') then
     show_end_of_buffer = true,
     dim_inactive = {
       enabled = false,
-      shade = "dark",
-      percentage = 0.10,
     },
-    no_italic = false,    -- Force no italic
-    no_bold = false,      -- Force no bold
-    no_underline = false, -- Force no underline
+    -- no_italic = false,    -- Force no italic
+    -- no_bold = false,      -- Force no bold
+    -- no_underline = false, -- Force no underline
     styles = {
       comments = { "italic" },
       conditionals = { "italic" },

@@ -11,13 +11,7 @@ return {
       '*',
       '!vim',
       '!help',
-      css = { css = true },
-      scss = { css = true },
-      html = { mode = "foreground" },
-      "javascript",
-      "javascript.jsx",
-      "javascriptreact",
-      "jsx",
+      '!toggleterm',
     })
   end
 }

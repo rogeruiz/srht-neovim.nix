@@ -70,23 +70,6 @@ require('lze').load {
   { import = "rstrz.plugins.trouble", },
   { import = "rstrz.plugins.todo-comments", },
   {
-    'focus.nvim',
-    for_cat = 'general.always',
-    event = "DeferredUIEnter",
-    after = function(plugin)
-      require("focus").setup({
-        ui = {
-          number = false,
-          relativenumber = false,
-          cursorline = false,
-          cursorcolumn = false,
-          signcolumn = false,
-          winhighlight = false,
-        },
-      })
-    end,
-  },
-  {
     "markdown-preview.nvim",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,
     -- based on result of nixCats('cat.name') and allows us to set a different

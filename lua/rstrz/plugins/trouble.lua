@@ -2,7 +2,9 @@ return {
   "trouble.nvim",
   for_cat = 'general.extra',
   event = 'DeferredUIEnter',
-  cmd = "Trouble",
+  cmd = {
+    "Trouble",
+  },
   keys = {
     {
       "<leader>xx",
@@ -35,4 +37,8 @@ return {
       desc = "Lisa Quickfix (Trouble)",
     },
   },
+  after = function ()
+    require('trouble').setup()
+  end
+
 }

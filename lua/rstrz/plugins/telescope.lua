@@ -240,7 +240,7 @@ return {
           height = 0.3,
         },
         file_ignore_patterns = {
-          ".git/",
+          "^.git/",
         },
         dynamic_preview_title = true,
         prompt_title = "Aviso",

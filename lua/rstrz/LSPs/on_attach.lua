@@ -2,7 +2,11 @@ return function(client, bufnr)
   -- we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
 
-  require('nvim-navic').attach(client, bufnr)
+  -- Navic no sirve en ciertos LSPs. Los eliminamos con `~=` y `(exp and exp)`.
+  if (client.name ~= 'tailwindcss' and
+        client.name ~= 'emmet_language_server') then
+    require('nvim-navic').attach(client, bufnr)
+  end
 
   local nmap = function(keys, func, desc)
     if desc then

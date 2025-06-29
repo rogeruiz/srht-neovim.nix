@@ -86,8 +86,6 @@
             ripgrep
             fd
             tree-sitter
-            nodePackages.typescript
-            nodePackages.typescript-language-server
             yaml-language-server
             marksman
 
@@ -113,6 +111,16 @@
           };
           pwsh = with pkgs; [
             powershell-editor-services
+          ];
+          python = with pkgs; [];
+          ui-work = with pkgs; [
+            nodePackages.typescript
+            nodePackages.typescript-language-server
+            eslint_d
+            prettierd
+            # PERF: Instalado con `brew` y `npm i -g` para no tener que construir node
+            # emmet-language-server
+            # tailwindcss-language-server
           ];
           go = with pkgs; [
             go
@@ -214,6 +222,14 @@
           pwsh = with pkgs; [
             neovimPlugins.powershell-nvim
           ];
+          database = with pkgs.vimPlugins; [
+            vim-dadbod
+            vim-dadbod-ui
+            vim-dadbod-completion
+          ];
+          ui-work = with pkgs.vimPlugins; [
+            typescript-tools-nvim
+          ];
           general = {
             blink = with pkgs.vimPlugins; [
               luasnip
@@ -247,7 +263,6 @@
               vim-fugitive
               vim-rhubarb
               nvim-surround
-              focus-nvim
               editorconfig-nvim
               vim-illuminate
               toggleterm-nvim
@@ -448,6 +463,8 @@
             go = true; # <- disabled but you could enable it with override or module on install
             pwsh = true;
             # rust = true;
+            database = true;
+            ui-work = true;
             lspDebugMode = false;
             themer = true;
             colorscheme = "catppuccin";

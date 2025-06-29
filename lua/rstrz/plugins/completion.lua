@@ -62,7 +62,7 @@ return {
             if type == '/' or type == '?' then return { 'buffer' } end
             -- Commands
             if type == ':' or type == '@' then return { 'cmdline', 'cmp_cmdline' } end
-            return {}
+            return { 'lsp', 'path', 'snippets','buffer', 'luasnip', 'dadbod' }
           end,
         },
         fuzzy = {
@@ -83,6 +83,10 @@ return {
           menu = {
             draw = {
               treesitter = { 'lsp' },
+              columns = {
+                { 'kind_icon' },
+                { 'label', gap = 2, },
+              },
               components = {
                 label = {
                   text = function(ctx)
@@ -121,6 +125,10 @@ return {
               opts = {
                 cmp_name = 'cmdline',
               },
+            },
+            dadbod = {
+              name = 'Dadbod',
+              module = 'vim_dadbod_completion.blink',
             },
           },
         },
