@@ -1,4 +1,3 @@
----@module File-type Lua code loaded after other plugins for CSV file-types.
 ---@author Roger Steve Ruiz
 ---@license MIT
 
