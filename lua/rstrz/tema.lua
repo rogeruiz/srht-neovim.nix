@@ -1,3 +1,14 @@
+---@diagnostic disable: need-check-nil
+local handle = io.popen("defaults read -g AppleInterfaceStyle")
+local result = handle:read("*a")
+handle:close()
+
+if string.find(result, "Dark") then
+  vim.o.background = 'dark'
+else
+  vim.o.background = 'light'
+end
+
 if nixCats('themer.catppuccin') then
   vim.g.loaded_netrwPlugin = 1
   require('catppuccin').setup {
@@ -123,9 +134,10 @@ if nixCats('themer.catppuccin') then
     },
   }
 
-  vim.o.background = 'dark'
   vim.cmd.colorscheme('catppuccin')
 
-  vim.keymap.set('n', '<leader>ctl', '<cmd>Catppuccin latte<cr>', { noremap = true, silent = true, desc = '[C]ambiar [t]ema a Catppuccin [l]atte' })
-  vim.keymap.set('n', '<leader>ctm', '<cmd>Catppuccin mocha<cr>', { noremap = true, silent = true, desc = '[C]ambiar [t]ema a Catppuccin [m]ocha' })
+  vim.keymap.set('n', '<leader>ctl', '<cmd>Catppuccin latte<cr>',
+    { noremap = true, silent = true, desc = '[C]ambiar [t]ema a Catppuccin [l]atte' })
+  vim.keymap.set('n', '<leader>ctm', '<cmd>Catppuccin mocha<cr>',
+    { noremap = true, silent = true, desc = '[C]ambiar [t]ema a Catppuccin [m]ocha' })
 end
