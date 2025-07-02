@@ -56,7 +56,7 @@ end
 
 require('lze').load {
   { import = "rstrz.plugins.snacks", },
-  { import = "rstrz.plugins.alpha", },
+  -- { import = "rstrz.plugins.alpha", },
   { import = "rstrz.plugins.telescope", },
   { import = "rstrz.plugins.treesitter", },
   { import = "rstrz.plugins.completion", },

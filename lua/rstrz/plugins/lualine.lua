@@ -74,6 +74,7 @@ return {
         },
         disabled_filetypes = {
           "alpha",
+          "snacks_dashboard",
           "calendar",
           "dap-repl",
           "dapui_breakpoints",

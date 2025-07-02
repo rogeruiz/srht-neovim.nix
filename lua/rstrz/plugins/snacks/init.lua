@@ -1,16 +1,16 @@
 return {
   'snacks.nvim',
   for_cat = "general.always",
-  event = "DeferredUIEnter",
+  event = "UIEnter",
+  load = function (name)
+    vim.cmd.packadd(name)
+    vim.cmd.packadd("alpha-nvim")
+  end,
   after = function(plugin)
     require('snacks').setup {
-      animate = {
-        duration = 20,
-        fps = 26,
-        easing = "outSine",
-      },
+      animate = { enabled = false },
       bigfile = { enabled = true },
-      dashboard = { enabled = false },
+      dashboard = require("rstrz.plugins.snacks.dashboard"),
       explorer = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
@@ -18,7 +18,7 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
       styles = {

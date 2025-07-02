@@ -2,7 +2,7 @@ require('lze').load {
   'telekasten.nvim',
   for_cat = 'general.extra',
   on_plugin = {
-    "alpha-nvim",
+    "snacks.nvim",
   },
   load = function(name)
     vim.cmd.packadd(name)
