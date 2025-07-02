@@ -43,6 +43,4 @@ vim.cmd([[
   " using a color theme with a background color in terminals such as
   " kitty that do not support background color erase.
   let &t_ut=''
-
-  " hi LineNr guifg=#bb9af7
 ]])

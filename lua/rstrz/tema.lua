@@ -22,26 +22,29 @@ if nixCats('themer.catppuccin') then
     dim_inactive = {
       enabled = false,
     },
-    -- no_italic = false,    -- Force no italic
-    -- no_bold = false,      -- Force no bold
-    -- no_underline = false, -- Force no underline
+    no_italic = false,    -- Force no italic
+    no_bold = false,      -- Force no bold
+    no_underline = false, -- Force no underline
     styles = {
       comments = { "italic" },
       conditionals = { "italic" },
       loops = { "italic" },
       functions = { "italic" },
-      keywords = {},
+      keywords = { "underdotted" },
       strings = { "bold" },
-      variables = {},
+      variables = { },
       numbers = { "bold" },
-      booleans = { "italic" },
-      properties = {},
+      booleans = { "italic", "bold" },
+      properties = { "italic" },
       types = {},
       operators = {},
     },
     color_overrides = {},
     custom_highlights = function(colors)
       return {
+        Cursor              = { bg = colors.crust, fg = colors.overlay2 },
+        lCursor             = { bg = colors.crust, fg = colors.overlay2 },
+        CursorIM            = { bg = colors.crust, fg = colors.overlay2 },
         -- Change color for line numbers in general
         LineNr              = { fg = colors.overlay1, bold = false, },
         -- Change color for line numbers when CursorLine is enabled
@@ -51,8 +54,8 @@ if nixCats('themer.catppuccin') then
         LineNrBelow         = { fg = colors.overlay1, },
         CursorLine          = { bg = colors.crust, },
         ColorColumn         = { bg = colors.mantle, },
-        Search              = { bg = colors.teal, fg = colors.base },
-        CurSearch           = { bg = colors.teal, fg = colors.base },
+        Search              = { bg = colors.yellow, fg = colors.base },
+        CurSearch           = { bg = colors.yellow, fg = colors.base },
         FloatShadow         = { bg = colors.mauve, fg = colors.blue },
         FloatShadowThrough  = { bg = colors.mauve, fg = colors.blue },
         -- Pa' DadBod UI (https://github.com/kristijanhusak/vim-dadbod-ui)
@@ -121,6 +124,10 @@ if nixCats('themer.catppuccin') then
         inlay_hints = {
           background = true,
         },
+      },
+      snacks = {
+        enabled = true,
+        indent_scope_color = "mauve",
       },
     },
     highlight_overrides = {

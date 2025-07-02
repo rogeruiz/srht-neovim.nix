@@ -99,6 +99,7 @@ return {
     History = "",
     Comment = "",
     Bug = "",
+    Exit = " ",
     Code = "",
     Telescope = "",
     Gear = "",
@@ -128,6 +129,9 @@ return {
     SeparatorBackward = "",
     InnerNode = "├○",
     OuterNode = "╰○",
+    Keyboard = "",
+    Document = "",
+    Folder = "",
   },
   diagnostics = {
     Sev1 = "󰈸",
