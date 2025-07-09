@@ -9,15 +9,18 @@ return {
     -- ft = "",
     -- keys = "",
     -- colorscheme = "",
-    load = function (name)
-        vim.cmd.packadd(name)
-        vim.cmd.packadd("nvim-treesitter-textobjects")
+    load = function(name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd("nvim-treesitter-textobjects")
     end,
-    after = function (plugin)
+    after = function(plugin)
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require('nvim-treesitter.configs').setup {
-        highlight = { enable = true, },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = true,
+        },
         indent = { enable = false, },
         incremental_selection = {
           enable = true,
