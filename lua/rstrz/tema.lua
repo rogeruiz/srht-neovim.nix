@@ -30,7 +30,7 @@ if nixCats('themer.catppuccin') then
       conditionals = { "italic" },
       loops = { "italic" },
       functions = { "italic" },
-      keywords = { "underdotted" },
+      keywords = {},
       strings = { "bold" },
       variables = { },
       numbers = { "bold" },

@@ -229,7 +229,7 @@ return {
             ['<C-d>'] = false,
           },
         },
-        theme = "ivy",
+        theme = "dropdown",
         path_display = {
           truncate = 3,
         },
@@ -250,7 +250,7 @@ return {
       extensions = {
         fzf = {},
         ['ui-select'] = {
-          require('telescope.themes').get_ivy(),
+          require('telescope.themes').get_dropdown(),
         },
       },
     }
