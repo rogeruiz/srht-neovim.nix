@@ -20,7 +20,6 @@ vim.opt.listchars = {
 }
 
 vim.o.termguicolors = true;
-vim.o.background = "light"
 
 -- Set highlight on search
 vim.opt.hlsearch = true
@@ -48,6 +47,8 @@ vim.o.whichwrap = "<,>,h,l"
 -- vim.o.tabstop = 4
 -- vim.o.softtabstop = 4
 -- vim.o.shiftwidth = 4
+
+vim.o.cursorline = true
 
 -- Haga que lavim.o.neuvas búfer aparescan abajo o a la derecha
 vim.o.splitbelow = true
