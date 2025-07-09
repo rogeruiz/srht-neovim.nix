@@ -34,9 +34,12 @@ return {
     end,
   },
   {
-    "colorful-menu.nvim",
+    "colorful-menu",
     for_cat = "general.blink",
     on_plugin = { "blink.cmp" },
+    after = function(_)
+      require('colorful-menu').setup({});
+    end,
   },
   {
     "blink.cmp",

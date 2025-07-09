@@ -127,6 +127,10 @@ require('lze').load {
     end,
   },
   {
+    "todo.txt-vim",
+    for_cat = 'general.extra',
+  },
+  {
     "fidget.nvim",
     for_cat = 'general.extra',
     event = "DeferredUIEnter",

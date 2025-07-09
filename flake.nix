@@ -34,6 +34,11 @@
       flake = false;
     };
 
+    "plugins-colorful-menu" = {
+      url = "github:xzbdmw/colorful-menu.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
@@ -236,7 +241,7 @@
               cmp-cmdline
               blink-cmp
               blink-compat
-              colorful-menu-nvim
+              pkgs.neovimPlugins.colorful-menu-nvim
             ];
             treesitter = with pkgs.vimPlugins; [
               nvim-treesitter-textobjects
@@ -282,6 +287,8 @@
               vim-matchup
               trouble-nvim
               todo-comments-nvim
+
+              todo-txt-vim
 
               nvim-ufo
               promise-async
