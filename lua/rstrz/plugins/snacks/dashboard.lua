@@ -54,9 +54,9 @@ return {
       { icon = icons.documents.File,   key = "n", desc = "[N]uevo archivo",  action = ":ene | startinsert" },
       { icon = icons.ui.Search,        key = "b", desc = "[B]usca archivos", action = ":lua require('telescope.builtin').find_files({ hidden = true, prompt_title = 'Buscando archivos', })" },
       { icon = icons.ui.Search,        key = "t", desc = "Busca [t]exto",    action = ":lua require('telescope.builtin').live_grep({ hidden = true, prompt_title = 'Buscando con Grep', })" },
+      { icon = icons.diagnostics.Todo, key = "r", desc = "Busca archivos [r]ecientes",  action = ":lua require('telescope.builtin').oldfiles({ prompt_title = 'Archivos recientes' })" },
       { icon = icons.git.Repo,         key = "g", desc = "Estado de [G]it",  action = ":lua require('telescope.builtin').git_status()" },
       { icon = icons.ui.Pencil,        key = "d", desc = "[D]iario",         action = ":lua require('telekasten').find_notes({ with_live_grep = true })" },
-      { icon = icons.diagnostics.Todo, key = "a", desc = "[R]ecordatorios",  action = ":ToDoTxtTasksOpen" },
       { icon = icons.ui.Gear,          key = "a", desc = "[A]justes",        action = ":e ~/.config/nix-neovim | :cd ~/.config/nix-neovim" },
       { icon = icons.ui.Exit,          key = "s", desc = "[S]alir",          action = ":qa" },
     },
@@ -104,6 +104,7 @@ return {
       local in_git = Snacks.git.get_root() ~= nil
       local cmds = {
         {
+          -- title = "Colores de Git",
           icon = icons.ui.Branch,
           cmd = "source ~/.local/share/rstrz/.functions; ,colores-git-perl",
           height = 1,
