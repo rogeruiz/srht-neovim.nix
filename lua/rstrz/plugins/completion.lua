@@ -19,7 +19,20 @@ return {
     "luasnip",
     for_cat = "general.blink",
     dep_of = { "blink.cmp" },
+    load = function(name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd('blink-emoji')
+      vim.cmd.packadd('blink-nerdfont')
+      vim.cmd.packadd('blink-gitmoji')
+      vim.cmd.packadd('blink-conventional-commits')
+      vim.cmd.packadd('blink-env')
+      vim.cmd.packadd('blink-git')
+    end,
     after = function(_)
+      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/rstrz/snippets/*.lua", true)) do
+        loadfile(ft_path)()
+      end
+
       local luasnip = require 'luasnip'
       require('luasnip.loaders.from_vscode').lazy_load()
       luasnip.config.setup {}
@@ -46,16 +59,7 @@ return {
     for_cat = "general.blink",
     event = "DeferredUIEnter",
     on_require = { "lspconfig" },
-    load = function (name)
-      vim.cmd.packadd(name)
-      vim.cmd.packadd('luasnip')
-    end,
     after = function(_)
-
-      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/rstrz/snippets/*.lua", true)) do
-        loadfile(ft_path)()
-      end
-
       require("blink.cmp").setup({
         -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
         -- See :h blink-cmp-config-keymap for configuring keymaps
@@ -120,8 +124,61 @@ return {
           preset = 'luasnip',
         },
         sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer', 'omni' },
+          default = {
+            'lsp',
+            'path',
+            'snippets',
+            'buffer',
+            'omni',
+            'git',
+            'conventional_commits',
+            'gitmoji',
+            'emoji',
+            'nerdfont',
+          },
           providers = {
+            git = {
+              module = 'blink-cmp-git',
+              name = 'Git',
+              opts = {},
+            },
+            conventional_commits = {
+              name = 'Conventional Commits',
+              module = 'blink-cmp-conventional-commits',
+              enabled = function()
+                return vim.bo.filetype == 'gitcommit'
+              end,
+            },
+            gitmoji = {
+              name = 'gitmoji',
+              module = 'gitmoji.blink',
+              score_offset = 25,
+              opts = {
+                filetypes = {
+                  'gitcommit',
+                }
+              },
+            },
+            emoji = {
+              module = 'blink-emoji',
+              name = 'Emoji',
+              score_offset = 20,
+              opts = {
+                insert = true,
+                trigger = function()
+                  return { ":" }
+                end,
+              },
+              should_show_items = function()
+                return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
+              end
+            },
+            nerdfont = {
+              module = 'blink-nerdfont',
+              name = 'Nerd Fonts',
+              score_offset = 5,
+              opts = { insert = true },
+            },
             path = {
               score_offset = 50,
             },

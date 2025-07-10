@@ -44,6 +44,36 @@
       flake = false;
     };
 
+    "plugins-blink-emoji" = {
+      url = "github:moyiz/blink-emoji.nvim";
+      flake = false;
+    };
+
+    "plugins-blink-nerdfont" = {
+      url = "github:MahanRahmati/blink-nerdfont.nvim";
+      flake = false;
+    };
+
+    "plugins-blink-gitmoji" = {
+      url = "github:Dynge/gitmoji.nvim";
+      flake = false;
+    };
+
+    "plugins-blink-conventional-commits" = {
+      url = "github:disrupted/blink-cmp-conventional-commits";
+      flake = false;
+    };
+
+    "plugins-blink-env" = {
+      url = "github:bydlw98/blink-cmp-env";
+      flake = false;
+    };
+
+    "plugins-blink-git" = {
+      url = "github:Kaiser-Yang/blink-cmp-git";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
@@ -247,6 +277,12 @@
               blink-compat
               pkgs.neovimPlugins.colorful-menu
               pkgs.neovimPlugins.luasnip
+              pkgs.neovimPlugins.blink-emoji
+              pkgs.neovimPlugins.blink-nerdfont
+              pkgs.neovimPlugins.blink-gitmoji
+              pkgs.neovimPlugins.blink-conventional-commits
+              pkgs.neovimPlugins.blink-env
+              pkgs.neovimPlugins.blink-git
             ];
             treesitter = with pkgs.vimPlugins; [
               nvim-treesitter-textobjects

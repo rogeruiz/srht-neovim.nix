@@ -31,6 +31,102 @@
         "type": "github"
       }
     },
+    "plugins-blink-conventional-commits": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739921280,
+        "narHash": "sha256-1egF6oJyckxKwKv23qpt53hI2qcGsg0JeDHUO5634lQ=",
+        "owner": "disrupted",
+        "repo": "blink-cmp-conventional-commits",
+        "rev": "e7ce3ddcc6d4044067d6d77ab41d480202e814ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "disrupted",
+        "repo": "blink-cmp-conventional-commits",
+        "type": "github"
+      }
+    },
+    "plugins-blink-emoji": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748124481,
+        "narHash": "sha256-pPHESNsByHg2liNUYkUEVR1wP1MZcil1sKTqrNI53e4=",
+        "owner": "moyiz",
+        "repo": "blink-emoji.nvim",
+        "rev": "f22ce8cac02a6ece05368220f1e38bd34fe376f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "moyiz",
+        "repo": "blink-emoji.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-blink-env": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743346198,
+        "narHash": "sha256-inLSnrm32k1G/lCUr+VVZBKaY9DZ7PB65BHAQ5Qpti8=",
+        "owner": "bydlw98",
+        "repo": "blink-cmp-env",
+        "rev": "700b6d9542b9d5deea80121abbb46b1400ace302",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bydlw98",
+        "repo": "blink-cmp-env",
+        "type": "github"
+      }
+    },
+    "plugins-blink-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751704520,
+        "narHash": "sha256-E+rMWeu2iLVm2m1C70qYeTabfjpM3R6Bz64zICp+vUg=",
+        "owner": "Kaiser-Yang",
+        "repo": "blink-cmp-git",
+        "rev": "31dad5db284641c94537de29865bb46495c53071",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kaiser-Yang",
+        "repo": "blink-cmp-git",
+        "type": "github"
+      }
+    },
+    "plugins-blink-gitmoji": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745437823,
+        "narHash": "sha256-cihJ2U+GIqf98t6wS4Fso6R8l69vXT+BsstqY7rrlc4=",
+        "owner": "Dynge",
+        "repo": "gitmoji.nvim",
+        "rev": "2659de229c2b26d50732f1220700eebbcdb2d6ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Dynge",
+        "repo": "gitmoji.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-blink-nerdfont": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738871270,
+        "narHash": "sha256-lcwcK/QGbZJrfEv282ytHVoijJxlctmPoWbHmIpZip0=",
+        "owner": "MahanRahmati",
+        "repo": "blink-nerdfont.nvim",
+        "rev": "2f3cedda78dcf4ef547128ce7f72f7b80e25501d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MahanRahmati",
+        "repo": "blink-nerdfont.nvim",
+        "type": "github"
+      }
+    },
     "plugins-colorful-menu": {
       "flake": false,
       "locked": {
@@ -132,6 +228,12 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-blink-conventional-commits": "plugins-blink-conventional-commits",
+        "plugins-blink-emoji": "plugins-blink-emoji",
+        "plugins-blink-env": "plugins-blink-env",
+        "plugins-blink-git": "plugins-blink-git",
+        "plugins-blink-gitmoji": "plugins-blink-gitmoji",
+        "plugins-blink-nerdfont": "plugins-blink-nerdfont",
         "plugins-colorful-menu": "plugins-colorful-menu",
         "plugins-colorizer": "plugins-colorizer",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
