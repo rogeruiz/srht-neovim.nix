@@ -51,14 +51,15 @@ return {
   preset = {
     header = random_header_figlet(),
     keys = {
-      { icon = icons.documents.File,   key = "n", desc = "[N]uevo archivo",  action = ":ene | startinsert" },
-      { icon = icons.ui.Search,        key = "b", desc = "[B]usca archivos", action = ":lua require('telescope.builtin').find_files({ hidden = true, prompt_title = 'Buscando archivos', })" },
-      { icon = icons.ui.Search,        key = "t", desc = "Busca [t]exto",    action = ":lua require('telescope.builtin').live_grep({ hidden = true, prompt_title = 'Buscando con Grep', })" },
-      { icon = icons.diagnostics.Todo, key = "r", desc = "Busca archivos [r]ecientes",  action = ":lua require('telescope.builtin').oldfiles({ prompt_title = 'Archivos recientes' })" },
-      { icon = icons.git.Repo,         key = "g", desc = "Estado de [G]it",  action = ":lua require('telescope.builtin').git_status()" },
-      { icon = icons.ui.Pencil,        key = "d", desc = "[D]iario",         action = ":lua require('telekasten').find_notes({ with_live_grep = true })" },
-      { icon = icons.ui.Gear,          key = "a", desc = "[A]justes",        action = ":e ~/.config/nix-neovim | :cd ~/.config/nix-neovim" },
-      { icon = icons.ui.Exit,          key = "s", desc = "[S]alir",          action = ":qa" },
+      { icon = icons.documents.File,   key = "n", desc = "[N]uevo archivo",            action = ":ene | startinsert" },
+      { icon = icons.ui.Search,        key = "b", desc = "[B]usca archivos",           action = ":lua require('telescope.builtin').find_files({ hidden = true, prompt_title = 'Buscando archivos', })" },
+      { icon = icons.ui.Search,        key = "t", desc = "Busca [t]exto",              action = ":lua require('telescope.builtin').live_grep({ hidden = true, prompt_title = 'Buscando con Grep', })" },
+      { icon = icons.diagnostics.Todo, key = "r", desc = "Busca archivos [r]ecientes", action = ":lua require('telescope.builtin').oldfiles({ prompt_title = 'Archivos recientes' })" },
+      { icon = icons.git.Repo,         key = "g", desc = "Estado de [G]it",            action = ":lua require('telescope.builtin').git_status()" },
+      { icon = icons.ui.Pencil,        key = "d", desc = "[D]iario",                   action = ":lua require('telekasten').find_notes({ with_live_grep = true })" },
+      { icon = icons.ui.Gear,          key = "a", desc = "[A]justes",                  action = ":e ~/.config/nix-neovim | :cd ~/.config/nix-neovim" },
+      { icon = icons.ui.List,          key = 'p', desc = 'NixCats [p]awsible',         action = ":NixCats pawsible" },
+      { icon = icons.ui.Exit,          key = "s", desc = "[S]alir",                    action = ":qa" },
     },
   },
   formats = {
@@ -101,6 +102,7 @@ return {
       random = os.time(),
     },
     function()
+      local Snacks = require('snacks')
       local in_git = Snacks.git.get_root() ~= nil
       local cmds = {
         {
