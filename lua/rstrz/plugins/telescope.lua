@@ -61,14 +61,13 @@ return {
   cmd = {
     "AlphaReady",
     "Telescope",
-    "LiveGrepGitRoot"
+    "LiveGrepGitRoot",
   },
   -- NOTE: our on attach function defines keybinds that call telescope.
   -- so, the on_require handler will load telescope when we use those.
   on_require = {
     "alpha-nvim",
     "telescope",
-    "nvim-notify",
     "notify"
   },
   dep_of = {
