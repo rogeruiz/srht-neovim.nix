@@ -39,6 +39,11 @@
       flake = false;
     };
 
+    "plugins-luasnip" = {
+      url = "github:L3MON4D3/LuaSnip/v2.4.0";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
@@ -237,11 +242,11 @@
           ];
           general = {
             blink = with pkgs.vimPlugins; [
-              luasnip
               cmp-cmdline
               blink-cmp
               blink-compat
-              pkgs.neovimPlugins.colorful-menu-nvim
+              pkgs.neovimPlugins.colorful-menu
+              pkgs.neovimPlugins.luasnip
             ];
             treesitter = with pkgs.vimPlugins; [
               nvim-treesitter-textobjects

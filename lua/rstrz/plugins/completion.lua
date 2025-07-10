@@ -46,7 +46,16 @@ return {
     for_cat = "general.blink",
     event = "DeferredUIEnter",
     on_require = { "lspconfig" },
+    load = function (name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd('luasnip')
+    end,
     after = function(_)
+
+      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/rstrz/snippets/*.lua", true)) do
+        loadfile(ft_path)()
+      end
+
       require("blink.cmp").setup({
         -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
         -- See :h blink-cmp-config-keymap for configuring keymaps
