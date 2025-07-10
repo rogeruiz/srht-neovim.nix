@@ -79,6 +79,23 @@
         "type": "github"
       }
     },
+    "plugins-luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746565566,
+        "narHash": "sha256-FtDpvgbtKN9PN1cPXU0jdxj9VdScRE9W7P6d9rVftRQ=",
+        "owner": "L3MON4D3",
+        "repo": "LuaSnip",
+        "rev": "458560534a73f7f8d7a11a146c801db00b081df0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "L3MON4D3",
+        "ref": "v2.4.0",
+        "repo": "LuaSnip",
+        "type": "github"
+      }
+    },
     "plugins-nvim-dap-powershell": {
       "flake": false,
       "locked": {
@@ -118,6 +135,7 @@
         "plugins-colorful-menu": "plugins-colorful-menu",
         "plugins-colorizer": "plugins-colorizer",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
+        "plugins-luasnip": "plugins-luasnip",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
         "plugins-powershell-nvim": "plugins-powershell-nvim"
       }
