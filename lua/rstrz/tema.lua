@@ -42,6 +42,7 @@ if nixCats('themer.catppuccin') then
     color_overrides = {},
     custom_highlights = function(colors)
       return {
+        Visual              = { bg = colors.crust, fg = colors.overlay2 },
         Cursor              = { bg = colors.crust, fg = colors.overlay2 },
         lCursor             = { bg = colors.crust, fg = colors.overlay2 },
         CursorIM            = { bg = colors.crust, fg = colors.overlay2 },
