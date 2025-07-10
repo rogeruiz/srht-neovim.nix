@@ -35,6 +35,7 @@ require('lze').load {
     end,
     before = function(_)
       vim.lsp.config('*', {
+        -- capabilities = require('blink.cmp').get_lsp_capabilities(),
         on_attach = require('rstrz.LSPs.on_attach'),
       })
     end,
