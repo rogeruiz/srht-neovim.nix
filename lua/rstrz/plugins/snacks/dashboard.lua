@@ -55,7 +55,7 @@ return {
       { icon = icons.ui.Search,        key = "b", desc = "[B]usca archivos",           action = ":lua require('telescope.builtin').find_files({ hidden = true, prompt_title = 'Buscando archivos', })" },
       { icon = icons.ui.Search,        key = "t", desc = "Busca [t]exto",              action = ":lua require('telescope.builtin').live_grep({ hidden = true, prompt_title = 'Buscando con Grep', })" },
       { icon = icons.diagnostics.Todo, key = "r", desc = "Busca archivos [r]ecientes", action = ":lua require('telescope.builtin').oldfiles({ prompt_title = 'Archivos recientes' })" },
-      { icon = icons.git.Repo,         key = "g", desc = "Estado de [G]it",            action = ":lua require('telescope.builtin').git_status()" },
+      { icon = icons.misc.Git,         key = "g", desc = "Estado de [G]it",            action = ":lua require('telescope.builtin').git_status()" },
       { icon = icons.ui.Pencil,        key = "d", desc = "[D]iario",                   action = ":lua require('telekasten').find_notes({ with_live_grep = true })" },
       { icon = icons.ui.Gear,          key = "a", desc = "[A]justes",                  action = ":e ~/.config/nix-neovim | :cd ~/.config/nix-neovim" },
       { icon = icons.ui.List,          key = 'p', desc = 'NixCats [p]awsible',         action = ":NixCats pawsible" },
@@ -106,20 +106,19 @@ return {
       local in_git = Snacks.git.get_root() ~= nil
       local cmds = {
         {
-          -- title = "Colores de Git",
-          icon = icons.ui.Branch,
+          icon = icons.kind.Color,
+          title = "Cambios pa' empujar",
           cmd = "source ~/.local/share/rstrz/.functions; ,colores-git-perl",
           height = 1,
-          width = 100,
-          align = "center",
+          ttl = 1,
+          align = "left",
         },
         {
-          icon = icons.ui.Branch,
+          icon = icons.misc.Git,
           title = "Estado de Git",
           cmd = "git --no-pager diff --stat -B -M -C",
           height = 10,
-          width = 100,
-          align = "center",
+          align = "left",
         },
       }
       return vim.tbl_map(function(cmd)
@@ -128,7 +127,8 @@ return {
           enabled = in_git,
           padding = 1,
           ttl = 5 * 60,
-          indent = 3,
+          indent = 2,
+          width = 100,
         }, cmd)
       end, cmds)
     end,

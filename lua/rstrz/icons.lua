@@ -158,5 +158,6 @@ return {
     Tag = "",
     Watch = "",
     Tree = "",
+    Git = "󰊢",
   },
 }
