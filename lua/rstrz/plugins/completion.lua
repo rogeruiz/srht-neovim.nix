@@ -38,13 +38,23 @@ return {
       require('luasnip.loaders.from_vscode').lazy_load()
       luasnip.config.setup {}
 
-      local ls = require('luasnip')
-
       vim.keymap.set({ "i", "s" }, "<M-n>", function()
-        if ls.choice_active() then
-          ls.change_choice(1)
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
         end
-      end)
+      end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-k>", function()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
+      end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-j>", function()
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      end, { silent = true })
     end,
   },
   {
@@ -79,7 +89,7 @@ return {
             -- Search forward and backward
             if type == '/' or type == '?' then return { 'buffer' } end
             -- Commands
-            if type == ':' or type == '@' then return { 'cmdline', 'cmp_cmdline' } end
+            if type == ':' or type == '@' then return { 'cmp_cmdline' } end
             return { 'lsp', 'path', 'snippets', 'buffer', 'luasnip', 'dadbod' }
           end,
         },
