@@ -275,6 +275,7 @@
               cmp-cmdline
               blink-cmp
               blink-compat
+              friendly-snippets
               pkgs.neovimPlugins.colorful-menu
               pkgs.neovimPlugins.luasnip
               pkgs.neovimPlugins.blink-emoji

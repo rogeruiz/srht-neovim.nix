@@ -27,6 +27,7 @@ return {
       vim.cmd.packadd('blink-conventional-commits')
       vim.cmd.packadd('blink-env')
       vim.cmd.packadd('blink-git')
+      vim.cmd.packadd('friendly-snippets')
     end,
     after = function(_)
       for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/rstrz/snippets/*.lua", true)) do
