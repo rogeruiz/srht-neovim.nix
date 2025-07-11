@@ -10,7 +10,7 @@
 Este repositorio es un reflejo. Todo los las presupuestas y discusiones pasan en
 sourcehut y no en GitHub.
 
-- [figsay][repo]
+- [neovim.nix][repo]
 - [lista de correos][ml]
 
 ---
@@ -28,7 +28,7 @@ sourcehut y no en GitHub.
 This repository is mirrored. All issues or discussions occur on sourcehut and
 not on GitHub.
 
-- [figsay][repo]
+- [neovim.nix][repo]
 - [mailing list][ml]
 
 [repo]: https://git.sr.ht/~rogeruiz/neovim.nix
