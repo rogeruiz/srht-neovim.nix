@@ -42,7 +42,7 @@ if nixCats('themer.catppuccin') then
     color_overrides = {},
     custom_highlights = function(colors)
       return {
-        Visual              = { bg = colors.crust, fg = colors.overlay2 },
+        Visual              = { bg = colors.yellow, fg = colors.base },
         Cursor              = { bg = colors.crust, fg = colors.overlay2 },
         lCursor             = { bg = colors.crust, fg = colors.overlay2 },
         CursorIM            = { bg = colors.crust, fg = colors.overlay2 },
@@ -57,8 +57,8 @@ if nixCats('themer.catppuccin') then
         ColorColumn         = { bg = colors.mantle, },
         Search              = { bg = colors.yellow, fg = colors.base },
         CurSearch           = { bg = colors.yellow, fg = colors.base },
-        FloatShadow         = { bg = colors.mauve, fg = colors.blue },
-        FloatShadowThrough  = { bg = colors.mauve, fg = colors.blue },
+        -- FloatShadow         = { bg = colors.overlay0, fg = colors.blue },
+        -- FloatShadowThrough  = { bg = colors.overlay0, fg = colors.blue },
         -- Pa' DadBod UI (https://github.com/kristijanhusak/vim-dadbod-ui)
         NotificationInfo    = { bg = colors.crust, fg = colors.overlay2 },
         NotificationWarning = { bg = colors.yellow, fg = colors.base },
