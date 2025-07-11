@@ -1,3 +1,19 @@
+local _border = "double"
+
+local function bordered_hover(_opts)
+        _opts = _opts or {}
+        return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
+                border = _border
+        }))
+end
+
+local function bordered_signature_help(_opts)
+        _opts = _opts or {}
+        return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
+                border = _border
+        }))
+end
+
 return function(client, bufnr)
   -- we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
@@ -35,8 +51,8 @@ return function(client, bufnr)
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Tipo [D]efinación')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Documentación para el hover')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Documentación de la Firma')
+  nmap('K', bordered_hover, 'Documentación para el hover')
+  nmap('<C-k>', bordered_signature_help, 'Documentación de la Firma')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaración')

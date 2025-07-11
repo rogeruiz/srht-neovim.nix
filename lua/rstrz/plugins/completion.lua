@@ -95,15 +95,29 @@ return {
           enabled = true,
           window = {
             show_documentation = true,
+            border = 'double'
           },
         },
         completion = {
           menu = {
+            border = 'double',
             draw = {
               treesitter = { 'lsp' },
               columns = {
-                { 'kind_icon', gap = 1, },
-                { 'label',     'kind',  gap = 2, },
+                {
+                  'kind_icon',
+                  'kind',
+                  gap = 2,
+                },
+                {
+                  'label',
+                  'label_description',
+                  gap = 1,
+                },
+                {
+                  'source_name',
+                  gap = 3,
+                },
               },
               components = {
                 label = {
@@ -119,6 +133,9 @@ return {
           },
           documentation = {
             auto_show = true,
+            window = {
+              border = 'double',
+            },
           },
         },
         snippets = {
