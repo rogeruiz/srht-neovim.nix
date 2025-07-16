@@ -32,7 +32,7 @@ if nixCats('themer.catppuccin') then
       functions = { "italic" },
       keywords = {},
       strings = { "bold" },
-      variables = { },
+      variables = {},
       numbers = { "bold" },
       booleans = { "italic", "bold" },
       properties = { "italic" },
@@ -43,7 +43,8 @@ if nixCats('themer.catppuccin') then
     custom_highlights = function(colors)
       return {
         Visual              = { bg = colors.yellow, fg = colors.base },
-        Cursor              = { bg = colors.crust, fg = colors.overlay2 },
+        TermCursor          = { bg = colors.blue, fg = colors.overlay2 },
+        Cursor              = { bg = colors.blue, fg = colors.overlay2 },
         lCursor             = { bg = colors.crust, fg = colors.overlay2 },
         CursorIM            = { bg = colors.crust, fg = colors.overlay2 },
         -- Change color for line numbers in general
