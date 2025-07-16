@@ -107,8 +107,10 @@ require('lze').load {
     "typescript-tools.nvim",
     for_cat = "ui-work",
     ft = {
+      "javascript",
+      "typescript",
       "typescriptreact",
-      "javascriptriptreact"
+      "javascriptriptreact",
     },
     load = function(name)
       vim.cmd.packadd(name)

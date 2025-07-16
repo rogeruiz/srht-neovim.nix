@@ -22,7 +22,7 @@ require('lze').load {
           typescriptreact = { "prettierd", "prettier" },
           -- templ = { "templ" },
           -- Conform will run multiple formatters sequentially
-          python = { "mypy", "black" },
+          python = { "mypy", "ruff" },
         },
       })
 

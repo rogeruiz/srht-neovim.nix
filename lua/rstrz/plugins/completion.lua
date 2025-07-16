@@ -55,6 +55,8 @@ return {
           luasnip.jump(-1)
         end
       end, { silent = true })
+
+      luasnip.filetype_extend('webc', { 'html' })
     end,
   },
   {
