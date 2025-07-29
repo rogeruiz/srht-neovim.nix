@@ -9,10 +9,15 @@
     # How to import it into your config is shown farther down in the startupPlugins set.
     # You put it here like this, and then below you would use it with `pkgs.neovimPlugins.hlargs`
 
-    # "plugins-hlargs" = {
-    #   url = "github:m-demare/hlargs.nvim";
-    #   flake = false;
-    # };
+    "plugins-hlargs" = {
+      url = "github:m-demare/hlargs.nvim";
+      flake = false;
+    };
+
+    "plugins-avante-nvim" = {
+      url = "github:yetone/avante.nvim";
+      flake = false;
+    };
 
     "plugins-nvim-dap-powershell" = {
       url = "github:Willem-J-an/nvim-dap-powershell";
@@ -152,7 +157,15 @@
           pwsh = with pkgs; [
             powershell-editor-services
           ];
-          python = with pkgs; [];
+          python = with pkgs; [
+            # pylint
+            # ruff
+            # mypy
+            pkgs.python313Packages.python-lsp-server
+            pkgs.python313Packages.mypy
+            pkgs.python313Packages.pylsp-mypy
+            pkgs.python313Packages.python-lsp-ruff
+          ];
           ui-work = with pkgs; [
             nodePackages.typescript
             nodePackages.typescript-language-server
@@ -177,7 +190,6 @@
             cargo-edit
             cargo-watch
             rust-analyzer
-
           ];
           # and easily check if they are included in lua
           format = with pkgs; [
@@ -296,6 +308,11 @@
               #   ]
               # ))
             ];
+            llm = with pkgs.vimPlugins; [
+              avante-nvim
+              nui-nvim
+              mini-icons
+            ];
             telescope = with pkgs.vimPlugins; [
               telescope-fzf-native-nvim
               telescope-ui-select-nvim
@@ -336,7 +353,7 @@
               promise-async
               # If it was included in your flake inputs as plugins-hlargs,
               # this would be how to add that plugin in your config.
-              # pkgs.neovimPlugins.hlargs
+              pkgs.neovimPlugins.hlargs
             ];
           };
         };
@@ -511,6 +528,7 @@
             debug = true;
             go = true; # <- disabled but you could enable it with override or module on install
             pwsh = true;
+            python = true;
             # rust = true;
             database = true;
             ui-work = true;

@@ -56,7 +56,6 @@ end
 
 require('lze').load {
   { import = "rstrz.plugins.snacks", },
-  -- { import = "rstrz.plugins.alpha", },
   { import = "rstrz.plugins.telescope", },
   { import = "rstrz.plugins.treesitter", },
   { import = "rstrz.plugins.completion", },
@@ -130,6 +129,25 @@ require('lze').load {
     "todo.txt-vim",
     for_cat = 'general.extra',
   },
+  -- {
+  --   "avante.nvim",
+  --   for_cat = "general.llm",
+  --   load = function(name)
+  --     vim.cmd.packadd(name)
+  --     vim.cmd.packadd('nui.nvim')
+  --     vim.cmd.packadd('mini.icons')
+  --   end,
+  --   after = function()
+  --     require("avante").setup({
+  --       provider = "gemini",
+  --       providers = {
+  --         gemini = {
+  --           model = "gemini-2.5-flash-lite"
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "fidget.nvim",
     for_cat = 'general.extra',
@@ -139,20 +157,20 @@ require('lze').load {
       require('fidget').setup({})
     end,
   },
-  -- {
-  --   "hlargs",
-  --   for_cat = 'general.extra',
-  --   event = "DeferredUIEnter",
-  --   -- keys = "",
-  --   dep_of = { "nvim-lspconfig" },
-  --   after = function(plugin)
-  --     require('hlargs').setup {
-  --       color = '#32a88f',
-  --     }
-  --     vim.cmd([[hi clear @lsp.type.parameter]])
-  --     vim.cmd([[hi link @lsp.type.parameter Hlargs]])
-  --   end,
-  -- },
+  {
+    "hlargs",
+    for_cat = 'general.extra',
+    event = "DeferredUIEnter",
+    -- keys = "",
+    dep_of = { "nvim-lspconfig" },
+    after = function(plugin)
+      require('hlargs').setup {
+        color = '#32a88f',
+      }
+      vim.cmd([[hi clear @lsp.type.parameter]])
+      vim.cmd([[hi link @lsp.type.parameter Hlargs]])
+    end,
+  },
   { import = "rstrz.plugins.gitsigns" },
   { import = "rstrz.plugins.which-key" },
 }

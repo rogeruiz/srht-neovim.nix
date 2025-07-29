@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-avante-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753350430,
+        "narHash": "sha256-TMcaF8cn/7aaonl6IKcwOSFqqkeQJuuolPNVHgF5quQ=",
+        "owner": "yetone",
+        "repo": "avante.nvim",
+        "rev": "bd69ae14f6f1f21642e16c16cbd18954f62365aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yetone",
+        "repo": "avante.nvim",
+        "type": "github"
+      }
+    },
     "plugins-blink-conventional-commits": {
       "flake": false,
       "locked": {
@@ -159,6 +175,22 @@
         "type": "github"
       }
     },
+    "plugins-hlargs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750096091,
+        "narHash": "sha256-PEYo4tcawKgqATbKw46BIus+D0afP6Q0YSrlJ0WHAA4=",
+        "owner": "m-demare",
+        "repo": "hlargs.nvim",
+        "rev": "ce8d705866dae44513ff48613d5e37e4da524d70",
+        "type": "github"
+      },
+      "original": {
+        "owner": "m-demare",
+        "repo": "hlargs.nvim",
+        "type": "github"
+      }
+    },
     "plugins-indent-rainbowline": {
       "flake": false,
       "locked": {
@@ -228,6 +260,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-avante-nvim": "plugins-avante-nvim",
         "plugins-blink-conventional-commits": "plugins-blink-conventional-commits",
         "plugins-blink-emoji": "plugins-blink-emoji",
         "plugins-blink-env": "plugins-blink-env",
@@ -236,6 +269,7 @@
         "plugins-blink-nerdfont": "plugins-blink-nerdfont",
         "plugins-colorful-menu": "plugins-colorful-menu",
         "plugins-colorizer": "plugins-colorizer",
+        "plugins-hlargs": "plugins-hlargs",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
         "plugins-luasnip": "plugins-luasnip",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",

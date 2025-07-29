@@ -3,6 +3,14 @@ if (catUtils.isNixCats and nixCats('lspDebugMode')) then
   vim.lsp.set_log_level("debug")
 end
 
+local venv_path = os.getenv('VIRTUAL_ENV')
+local py_path = nil
+if venv_path ~= nil then
+  py_path = venv_path .. "/bin/python3"
+else
+  py_path = vim.g.python3_host_prog
+end
+
 -- NOTE: This file uses lzextras.lsp handler https://github.com/BirdeeHub/lzextras?tab=readme-ov-file#lsp-handler
 -- This is a slightly more performant fallback function
 -- for when you don't provide a filetype to trigger on yourself.
@@ -101,6 +109,41 @@ require('lze').load {
     -- if you don't provide the filetypes it asks lspconfig for them
     lsp = {
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    },
+  },
+  {
+    'pylsp',
+    for_cat = 'python',
+    lsp = {
+      filetypes = { 'python' },
+      settings = {
+        pylsp = {
+          plugins = {
+            -- formatter options
+            black = { enabled = false },
+            autopep8 = { enabled = false },
+            yapf = { enabled = false },
+            -- linter options
+            pylint = { enabled = false },
+            pyflakes = { enabled = false },
+            pycodestyle = { enabled = false },
+            -- type checker
+            pylsp_mypy = {
+              enabled = true,
+              overrides = { "--python-executible", py_path, true },
+              report_progress = true,
+              live_mode = false,
+            },
+            ruff = {
+              enabled = true,
+            },
+            -- auto-completion options
+            jedi_completion = { fuzzy = true },
+            -- import sorting
+            pyls_isort = { enabled = true },
+          },
+        },
+      },
     },
   },
   {

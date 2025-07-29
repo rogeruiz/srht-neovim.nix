@@ -101,36 +101,36 @@ return {
       },
       random = os.time(),
     },
-    function()
-      local Snacks = require('snacks')
-      local in_git = Snacks.git.get_root() ~= nil
-      local cmds = {
-        {
-          icon = icons.kind.Color,
-          title = "Cambios pa' empujar",
-          cmd = "source ~/.local/share/rstrz/.functions; ,colores-git-perl",
-          height = 1,
-          ttl = 1,
-          align = "left",
-        },
-        {
-          icon = icons.misc.Git,
-          title = "Estado de Git",
-          cmd = "git --no-pager diff --stat -B -M -C",
-          height = 10,
-          align = "left",
-        },
-      }
-      return vim.tbl_map(function(cmd)
-        return vim.tbl_extend("force", {
-          section = "terminal",
-          enabled = in_git,
-          padding = 1,
-          ttl = 5 * 60,
-          indent = 2,
-          width = 100,
-        }, cmd)
-      end, cmds)
-    end,
+    -- function()
+    --   local Snacks = require('snacks')
+    --   local in_git = Snacks.git.get_root() ~= nil
+    --   local cmds = {
+    --     {
+    --       icon = icons.kind.Color,
+    --       title = "Cambios pa' empujar",
+    --       cmd = "source ~/.local/share/rstrz/.functions; ,colores-git-perl",
+    --       height = 1,
+    --       ttl = 1,
+    --       align = "left",
+    --     },
+    --     {
+    --       icon = icons.misc.Git,
+    --       title = "Estado de Git",
+    --       cmd = "git --no-pager diff --stat -B -M -C",
+    --       height = 10,
+    --       align = "left",
+    --     },
+    --   }
+    --   return vim.tbl_map(function(cmd)
+    --     return vim.tbl_extend("force", {
+    --       section = "terminal",
+    --       enabled = in_git,
+    --       padding = 1,
+    --       ttl = 5 * 60,
+    --       indent = 2,
+    --       width = 100,
+    --     }, cmd)
+    --   end, cmds)
+    -- end,
   },
 }
