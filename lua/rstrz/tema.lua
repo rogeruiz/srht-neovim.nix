@@ -42,10 +42,11 @@ if nixCats('themer.catppuccin') then
     color_overrides = {},
     custom_highlights = function(colors)
       return {
-        Visual              = { bg = colors.yellow, fg = colors.base },
-        TermCursor          = { bg = colors.blue, fg = colors.overlay2 },
-        Cursor              = { bg = colors.blue, fg = colors.overlay2 },
-        lCursor             = { bg = colors.crust, fg = colors.overlay2 },
+        Visual              = { bg = colors.crust },
+        IncSearch           = { bg = colors.blue, fg = colors.peach },
+        TermCursor          = { bg = colors.blue, fg = colors.peach },
+        Cursor              = { bg = colors.blue, fg = colors.peach },
+        lCursor             = { bg = colors.blue, fg = colors.peach },
         CursorIM            = { bg = colors.crust, fg = colors.overlay2 },
         -- Change color for line numbers in general
         LineNr              = { fg = colors.overlay1, bold = false, },
@@ -56,8 +57,8 @@ if nixCats('themer.catppuccin') then
         LineNrBelow         = { fg = colors.overlay1, },
         CursorLine          = { bg = colors.crust, },
         ColorColumn         = { bg = colors.mantle, },
-        Search              = { bg = colors.yellow, fg = colors.base },
-        CurSearch           = { bg = colors.yellow, fg = colors.base },
+        Search              = { bg = colors.yellow, fg = colors.blue },
+        CurSearch           = { bg = colors.peach, fg = colors.blue },
         -- FloatShadow         = { bg = colors.overlay0, fg = colors.blue },
         -- FloatShadowThrough  = { bg = colors.overlay0, fg = colors.blue },
         -- Pa' DadBod UI (https://github.com/kristijanhusak/vim-dadbod-ui)
@@ -80,11 +81,9 @@ if nixCats('themer.catppuccin') then
         todo_txt_done_task  = { fg = colors.overlay0 },
         -- Pa' Notify
         NotifyBackground    = { bg = colors.mantle },
-
       }
     end,
     integrations = {
-      alpha = true,
       cmp = true,
       dap = true,
       dap_ui = true,
@@ -99,7 +98,7 @@ if nixCats('themer.catppuccin') then
       lsp_trouble = true,
       markdown = true,
       mason = true,
-      mini = false,
+      mini = true,
       navic = true,
       neotree = true,
       noice = true,

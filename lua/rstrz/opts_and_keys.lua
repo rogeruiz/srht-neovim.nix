@@ -25,10 +25,11 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 ]])
 
-
 -- Set highlight on search
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n><cmd>q<cr>')
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
