@@ -29,7 +29,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n><cmd>q<cr>')
+vim.keymap.set('t', '<esc><esc><esc>', '<c-\\><c-n>')
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
