@@ -28,10 +28,10 @@ if nixCats('general.extra') then
       show_hidden = true
     },
     columns = {
-      "icon",
       "permissions",
       "size",
       "mtime",
+      "icon",
     },
     keymaps = {
       ["g?"] = { "actions.show_help", desc = "Mostrar ayuda" },
