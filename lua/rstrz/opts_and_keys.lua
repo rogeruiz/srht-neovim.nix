@@ -172,7 +172,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Abrir mens
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Abrir lista de diagnóstico' })
 
 
-vim.o.clipboard = 'unnamed'
+vim.o.clipboard = 'unnamedplus'
 
 -- You shou instead use these keybindings so that they are still easy to use, but dont conflict
 vim.keymap.set({ "v", "x", "n" }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank al portapapeles' })
