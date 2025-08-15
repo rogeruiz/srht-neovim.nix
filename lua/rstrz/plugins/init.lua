@@ -69,7 +69,7 @@ require('lze').load {
   { import = "rstrz.plugins.trouble", },
   { import = "rstrz.plugins.todo-comments", },
   {
-    "markdown-preview.nvim",
+    "vim-marked",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,
     -- based on result of nixCats('cat.name') and allows us to set a different
     -- default if we wish it is defined in luaUtils template in
@@ -77,12 +77,13 @@ require('lze').load {
     -- nixCats('cat.name') == true if you didnt care to set a different default
     -- for when not using nix than the default you already set
     for_cat = 'general.markdown',
-    cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle", },
+    cmd = { "MarkedOpen", "MarkedQuit", "MarkedToggle", "MarkedPreview", },
+    event = "DeferredUIEnter",
     ft = "markdown",
     keys = {
-      { "<leader>mp", "<cmd>MarkdownPreview <CR>",       mode = { "n" }, noremap = true, desc = "markdown preview" },
-      { "<leader>ms", "<cmd>MarkdownPreviewStop <CR>",   mode = { "n" }, noremap = true, desc = "markdown preview stop" },
-      { "<leader>mt", "<cmd>MarkdownPreviewToggle <CR>", mode = { "n" }, noremap = true, desc = "markdown preview toggle" },
+      { "<leader>mp", "<cmd>MarkedPreview <CR>", mode = { "n" }, noremap = true, desc = "[M]arkdown [p]revía" },
+      { "<leader>ms", "<cmd>MarkedQuit <CR>",    mode = { "n" }, noremap = true, desc = "[M]arkdown prevía [q]uitar" },
+      { "<leader>mt", "<cmd>MarkedToggle <CR>",  mode = { "n" }, noremap = true, desc = "[M]arkdown prevía [t]oggle" },
     },
     before = function(plugin)
       vim.g.mkdp_auto_close = 0

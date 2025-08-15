@@ -14,6 +14,11 @@
       flake = false;
     };
 
+    "plugins-vim-marked" = {
+      url = "github:itspriddle/vim-marked?rev=143bdaabbb25ce1892e105b691e23bbe7531e2a1";
+      flake = false;
+    };
+
     "plugins-avante-nvim" = {
       url = "github:yetone/avante.nvim";
       flake = false;
@@ -266,6 +271,7 @@
           ];
           markdown = with pkgs.vimPlugins; [
             markdown-preview-nvim
+            pkgs.neovimPlugins.vim-marked
           ];
           neonixdev = with pkgs.vimPlugins; [
             lazydev-nvim
