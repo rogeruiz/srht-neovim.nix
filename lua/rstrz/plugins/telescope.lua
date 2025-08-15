@@ -76,8 +76,18 @@ return {
   event = "DeferredUIEnter",
   -- ft = "",
   keys = {
-    { "<leader>bM", '<cmd>Telescope notify<CR>', mode = { "n" }, desc = '[B]uscar [M]ensajes en notificaciones' },
-    { "<leader>bp", live_grep_git_root,          mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
+    {
+      "<leader>bM",
+      function()
+        require("telescope").extensions.notify.notify({
+
+          prompt_title = 'Busque con Grep en los Archivos Abiertos',
+        })
+      end,
+      mode = { "n" },
+      desc = '[B]uscar [M]ensajes en notificaciones'
+    },
+    { "<leader>bp", live_grep_git_root, mode = { "n" }, desc = '[B]uscar raiz del [p]royecto git', },
     {
       "<leader>/",
       function()
