@@ -167,6 +167,51 @@ require('lze').load {
     end
   },
   {
+    "rustaceanvim",
+    for_cat = "rust",
+    lazy = false,
+    before = function()
+      vim.g.rustaceanvim = {
+        tools = {},
+        server = {
+          -- on_attach = function(client, bufnr) end,
+          default_settings = {
+            ['rust-analyzer'] = {
+              files = {
+                exclude = {
+                  "_build",
+                  ".dart_tool",
+                  ".flatpak-builder",
+                  ".git",
+                  ".gitlab",
+                  ".gitlab-ci",
+                  ".gradle",
+                  ".idea",
+                  ".next",
+                  ".project",
+                  ".scannerwork",
+                  ".settings",
+                  ".venv",
+                  ".direnv",
+                  "archetype-resources",
+                  "bin",
+                  "hooks",
+                  "node_modules",
+                  "po",
+                  "screenshots",
+                  "target"
+                }
+              },
+            },
+          },
+        },
+      }
+    end,
+    load = function (name)
+      vim.cmd.packadd(name)
+    end,
+  },
+  {
     'emmet_language_server',
     for_cat = 'ui-work',
     lsp = {

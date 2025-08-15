@@ -288,6 +288,9 @@
           ui-work = with pkgs.vimPlugins; [
             typescript-tools-nvim
           ];
+          rust = with pkgs.vimPlugins; [
+            rustaceanvim
+          ];
           general = {
             blink = with pkgs.vimPlugins; [
               cmp-cmdline
@@ -535,7 +538,7 @@
             go = true; # <- disabled but you could enable it with override or module on install
             pwsh = true;
             python = true;
-            # rust = true;
+            rust = true;
             database = true;
             ui-work = true;
             lspDebugMode = false;
