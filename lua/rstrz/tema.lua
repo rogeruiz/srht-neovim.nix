@@ -1,9 +1,18 @@
 ---@diagnostic disable: need-check-nil
-local handle = io.popen("defaults read -g AppleInterfaceStyle")
-local result = handle:read("*a")
-handle:close()
+local function get_apple_interface_style()
+  local handle, result = io.popen("defaults read -g AppleInterfaceStyle"), nil
+  if handle then
+    result = handle:read("*a")
+    handle:close()
+  end
+  if not result or result == "" then
+    result = "Light" -- Fallback to Light if the command produces no output
+  end
+  return result
+end
 
-if string.find(result, "Dark") then
+local interface_style = get_apple_interface_style()
+if interface_style and string.find(interface_style, "Dark") then
   vim.o.background = 'dark'
 else
   vim.o.background = 'light'
