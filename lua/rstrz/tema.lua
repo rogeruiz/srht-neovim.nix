@@ -1,17 +1,41 @@
 ---@diagnostic disable: need-check-nil
-local function get_apple_interface_style()
-  local handle, result = io.popen("defaults read -g AppleInterfaceStyle"), nil
-  if handle then
-    result = handle:read("*a")
-    handle:close()
+local function get_system_theme()
+  local os_name = vim.uv.os_uname().sysname
+
+  if os_name == "Darwin" then
+    local handle, result = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null"), nil
+    if handle then
+      result = handle:read("*a"):match("%S+")
+      handle:close()
+    end
+    return result == "Dark" and "Dark" or "Light"
+  elseif os_name == "Linux" then
+    local handle, result = io.popen("gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null"), nil
+    if handle then
+      result = handle:read("*a"):lower()
+      handle:close()
+    end
+    -- BUG: This only works if the GNOME theme has the word `dark` in the name. Won't work for theme names like `mocha`.
+    if result and result:find("dark") then
+      return "Dark"
+    end
+    return "Light"
+  elseif os_name:find("Windows") then
+    local handle, result =
+        io.popen(
+          "reg query \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\" /v AppsUseLightTheme 2>nul | findstr REG_DWORD"),
+        nil
+    if handle then
+      result = handle:read("*a"):match("0x(%d+)")
+      handle:close()
+    end
+    return result == "0" and "Dark" or "Light"
   end
-  if not result or result == "" then
-    result = "Light" -- Fallback to Light if the command produces no output
-  end
-  return result
+
+  return "Light" -- Default to Light if OS is not recognized
 end
 
-local interface_style = get_apple_interface_style()
+local interface_style = get_system_theme()
 if interface_style and string.find(interface_style, "Dark") then
   vim.o.background = 'dark'
 else
