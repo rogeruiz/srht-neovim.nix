@@ -90,8 +90,8 @@ if nixCats('themer.catppuccin') then
         LineNrBelow         = { fg = colors.overlay1, },
         CursorLine          = { bg = colors.crust, },
         ColorColumn         = { bg = colors.mantle, },
-        Search              = { bg = colors.yellow, fg = colors.blue },
-        CurSearch           = { bg = colors.peach, fg = colors.blue },
+        Search              = { fg = colors.yellow, bg = colors.blue },
+        CurSearch           = { fg = colors.peach, bg = colors.blue },
         -- FloatShadow         = { bg = colors.overlay0, fg = colors.blue },
         -- FloatShadowThrough  = { bg = colors.overlay0, fg = colors.blue },
         -- Pa' DadBod UI (https://github.com/kristijanhusak/vim-dadbod-ui)
@@ -150,10 +150,10 @@ if nixCats('themer.catppuccin') then
           information = { "italic" },
         },
         underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
+          errors = { "undercurl" },
+          hints = { "underdotted" },
+          warnings = { "underdouble" },
+          information = { "underdashed" },
         },
         inlay_hints = {
           background = true,
