@@ -84,6 +84,11 @@
       flake = false;
     };
 
+    "plugins-github-copilot" = {
+      url = "github:zbirenbaum/copilot.lua";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
@@ -363,6 +368,8 @@
               # If it was included in your flake inputs as plugins-hlargs,
               # this would be how to add that plugin in your config.
               pkgs.neovimPlugins.hlargs
+
+              pkgs.neovimPlugins.github-copilot
             ];
           };
         };

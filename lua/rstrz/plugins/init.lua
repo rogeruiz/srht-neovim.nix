@@ -132,25 +132,41 @@ require('lze').load {
     "todo.txt-vim",
     for_cat = 'general.extra',
   },
-  -- {
-  --   "avante.nvim",
-  --   for_cat = "general.llm",
-  --   load = function(name)
-  --     vim.cmd.packadd(name)
-  --     vim.cmd.packadd('nui.nvim')
-  --     vim.cmd.packadd('mini.icons')
-  --   end,
-  --   after = function()
-  --     require("avante").setup({
-  --       provider = "gemini",
-  --       providers = {
-  --         gemini = {
-  --           model = "gemini-2.5-flash-lite"
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "avante.nvim",
+    for_cat = "general.llm",
+    load = function(name)
+      vim.cmd.packadd(name)
+      vim.cmd.packadd('nui.nvim')
+      vim.cmd.packadd('mini.icons')
+    end,
+    after = function()
+      require("avante").setup({
+        provider = "copilot",
+      })
+    end,
+  },
+  {
+    "github-copilot",
+    for_cat = 'general.extra',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    -- keys = "",
+    after = function(plugin)
+      require('copilot').setup({
+        panel = {
+          enabled = false,
+        },
+        suggestion = {
+          auto_trigger = true,
+          hide_during_completion = false,
+          keymap = {
+            accept = '<Tab>',
+          },
+        },
+      })
+    end,
+  },
   {
     "fidget.nvim",
     for_cat = 'general.extra',
