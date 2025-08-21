@@ -175,6 +175,22 @@
         "type": "github"
       }
     },
+    "plugins-github-copilot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755710821,
+        "narHash": "sha256-ZmxQ+pOEP/NjrPG8V2ESWeiNOs9GWL0yyeLJIqyVYu0=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "0753a440b0eed13ff32366ef5e21c215012fd1d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
     "plugins-hlargs": {
       "flake": false,
       "locked": {
@@ -256,6 +272,23 @@
         "type": "github"
       }
     },
+    "plugins-vim-marked": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717343182,
+        "narHash": "sha256-8mE8Wc3385EhC7BzY3RUMDi5ela5U1WqvP/d8zWcfM4=",
+        "owner": "itspriddle",
+        "repo": "vim-marked",
+        "rev": "143bdaabbb25ce1892e105b691e23bbe7531e2a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "itspriddle",
+        "repo": "vim-marked",
+        "rev": "143bdaabbb25ce1892e105b691e23bbe7531e2a1",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nixCats": "nixCats",
@@ -269,11 +302,13 @@
         "plugins-blink-nerdfont": "plugins-blink-nerdfont",
         "plugins-colorful-menu": "plugins-colorful-menu",
         "plugins-colorizer": "plugins-colorizer",
+        "plugins-github-copilot": "plugins-github-copilot",
         "plugins-hlargs": "plugins-hlargs",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
         "plugins-luasnip": "plugins-luasnip",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
-        "plugins-powershell-nvim": "plugins-powershell-nvim"
+        "plugins-powershell-nvim": "plugins-powershell-nvim",
+        "plugins-vim-marked": "plugins-vim-marked"
       }
     }
   },
