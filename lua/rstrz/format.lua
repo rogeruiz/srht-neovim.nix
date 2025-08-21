@@ -3,7 +3,7 @@ require('lze').load {
     "conform.nvim",
     for_cat = 'format',
     -- cmd = { "" },
-    -- event = "",
+    event = "UIEnter",
     -- ft = "",
     keys = {
       { "<leader>FF", desc = "[F]ormat [F]ile" },
@@ -31,6 +31,7 @@ require('lze').load {
           -- Conform will run multiple formatters sequentially
           python = { "mypy", "ruff" },
           markdown = { "prettierd" },
+          css = { "prettierd" },
         },
       })
 
