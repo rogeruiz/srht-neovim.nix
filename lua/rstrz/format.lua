@@ -26,10 +26,10 @@ require('lze').load {
           -- and configure them here
           lua = { "stylua" },
           go = { "gofmt", "golint" },
-          typescriptreact = { "prettierd", "prettier" },
+          typescriptreact = { "eslint", "prettierd", "prettier" },
           -- templ = { "templ" },
           -- Conform will run multiple formatters sequentially
-          python = { "mypy", "ruff" },
+          python = { "ruff", "mypy" },
           markdown = { "prettierd" },
           css = { "prettierd" },
         },

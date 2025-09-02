@@ -4,12 +4,12 @@ return {
   -- cmd = {},
   event = "DeferredUIEnter",
   colorscheme = 'catppuccin',
-  load = function (name)
+  load = function(name)
     vim.cmd.packadd(name)
     vim.cmd.packadd('catppuccin-nvim')
     vim.cmd.packadd('nvim-navic')
   end,
-  after = function (plugin)
+  after = function(plugin)
     local colors = require("catppuccin.palettes").get_palette()
     local icons = require("rstrz.icons")
     local navic = require("nvim-navic")
@@ -181,8 +181,8 @@ return {
             icons_enabled = true,
             file_status = true,
             newfile_status = true,
-            path = 1,
-            shorting_target = 150,
+            path = 4,
+            shorting_target = 24,
             symbols = {
               modified = icons.documents.ui.Modified,
               readonly = icons.documents.ui.ReadOnly,
