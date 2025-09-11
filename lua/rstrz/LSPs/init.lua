@@ -130,7 +130,7 @@ require('lze').load {
             -- type checker
             pylsp_mypy = {
               enabled = true,
-              overrides = { "--python-executible", py_path, true },
+              overrides = { "--python-executable", py_path, true },
               report_progress = true,
               live_mode = false,
             },
@@ -207,7 +207,7 @@ require('lze').load {
         },
       }
     end,
-    load = function (name)
+    load = function(name)
       vim.cmd.packadd(name)
     end,
   },

@@ -181,7 +181,7 @@ return {
             icons_enabled = true,
             file_status = true,
             newfile_status = true,
-            path = 4,
+            path = 1,
             shorting_target = 24,
             symbols = {
               modified = icons.documents.ui.Modified,
@@ -222,7 +222,7 @@ return {
             file_status = true,
             newfile_status = true,
             path = 1,
-            shorting_target = 150,
+            shorting_target = 24,
             symbols = {
               modified = icons.documents.ui.Modified,
               readonly = icons.documents.ui.ReadOnly,
@@ -257,7 +257,7 @@ return {
         lualine_a = {
           {
             "mode",
-            fmt = function(str) return str:sub(1, 1) end,
+            -- fmt = function(str) return str:sub(1, 1) end,
           },
         },
         lualine_b = {
