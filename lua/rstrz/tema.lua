@@ -15,8 +15,8 @@ local function get_system_theme()
       result = handle:read("*a"):lower()
       handle:close()
     end
-    -- BUG: This only works if the GNOME theme has the word `dark` in the name. Won't work for theme names like `mocha`.
-    if result and result:find("dark") then
+    -- BUG: This only works if the GNOME theme has the word `mocha` in the name. This is not ideal.
+    if result and result:find("mocha") then
       return "Dark"
     end
     return "Light"

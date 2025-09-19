@@ -30,7 +30,7 @@ end
 ---the dashboard theme.
 ---@return string? wd The working directory
 local function get_current_directory()
-  local directory_length = 20
+  local directory_length = 45
   -- Matches the last two directories.
   local wd = os.getenv("PWD"):match("^.+/(.+/.+)$")
   if wd == nil then
@@ -81,7 +81,7 @@ return {
     {
       padding = 1,
       text = {
-        "Vamos pues",
+        get_current_directory(),
         hl = pick_color(),
         align = "center"
       },

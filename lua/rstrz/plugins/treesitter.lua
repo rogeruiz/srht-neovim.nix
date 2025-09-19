@@ -16,7 +16,11 @@ return {
     after = function(plugin)
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
+      -- Set a writable directory for parser installation to avoid Nix store permission issues
+      local parser_dir = vim.fn.stdpath('data') .. '/treesitter-parsers'
+      vim.opt.runtimepath:prepend(parser_dir)
       require('nvim-treesitter.configs').setup {
+        parser_install_dir = parser_dir,
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = true,

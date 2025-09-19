@@ -57,6 +57,7 @@ if nixCats('general.extra') then
 end
 
 require('lze').load {
+  { import = "rstrz.plugins.animation", },
   { import = "rstrz.plugins.snacks", },
   { import = "rstrz.plugins.telescope", },
   { import = "rstrz.plugins.treesitter", },

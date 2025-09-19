@@ -175,6 +175,22 @@
         "type": "github"
       }
     },
+    "plugins-github-copilot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758072504,
+        "narHash": "sha256-tE0DC4VC8bzhKo+7otXAOBXXhU2dcf5lIU9IonVoWwc=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "f7732213e41995439171f35bdd2bf1c809f8e8e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
     "plugins-hlargs": {
       "flake": false,
       "locked": {
@@ -272,7 +288,7 @@
         "type": "github"
       }
     },
-    "plugins-smoothcursor.nvim": {
+    "plugins-smoothcursor-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1726648986,
@@ -288,7 +304,7 @@
         "type": "github"
       }
     },
-    "plugins-tiny-glimmer": {
+    "plugins-tiny-glimmer-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1757017180,
@@ -334,14 +350,15 @@
         "plugins-blink-nerdfont": "plugins-blink-nerdfont",
         "plugins-colorful-menu": "plugins-colorful-menu",
         "plugins-colorizer": "plugins-colorizer",
+        "plugins-github-copilot": "plugins-github-copilot",
         "plugins-hlargs": "plugins-hlargs",
         "plugins-indent-rainbowline": "plugins-indent-rainbowline",
         "plugins-luasnip": "plugins-luasnip",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
         "plugins-nvim-luxmotion": "plugins-nvim-luxmotion",
         "plugins-powershell-nvim": "plugins-powershell-nvim",
-        "plugins-smoothcursor.nvim": "plugins-smoothcursor.nvim",
-        "plugins-tiny-glimmer": "plugins-tiny-glimmer",
+        "plugins-smoothcursor-nvim": "plugins-smoothcursor-nvim",
+        "plugins-tiny-glimmer-nvim": "plugins-tiny-glimmer-nvim",
         "plugins-vim-marked": "plugins-vim-marked"
       }
     }

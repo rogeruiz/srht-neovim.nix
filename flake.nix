@@ -89,6 +89,21 @@
       flake = false;
     };
 
+    "plugins-smoothcursor-nvim" = {
+      url = "github:gen740/SmoothCursor.nvim";
+      flake = false;
+    };
+
+    "plugins-tiny-glimmer-nvim" = {
+      url = "github:rachartier/tiny-glimmer.nvim";
+      flake = false;
+    };
+
+    "plugins-nvim-luxmotion" = {
+      url = "github:LuxVim/nvim-luxmotion";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
@@ -345,6 +360,13 @@
               vim-illuminate
               toggleterm-nvim
               snacks-nvim
+            ];
+            anime = with pkgs.vimPlugins; [
+              pkgs.neovimPlugins.tiny-glimmer-nvim
+              pkgs.neovimPlugins.smoothcursor-nvim
+              specs-nvim
+              smear-cursor-nvim
+              pkgs.neovimPlugins.nvim-luxmotion
             ];
             extra = with pkgs.vimPlugins; [
               fidget-nvim
