@@ -328,14 +328,18 @@
             ];
             treesitter = with pkgs.vimPlugins; [
               nvim-treesitter-textobjects
-              nvim-treesitter.withAllGrammars
-              # This is for if you only want some of the grammars
-              # (nvim-treesitter.withPlugins (
-              #   plugins: with plugins; [
-              #     nix
-              #     lua
-              #   ]
-              # ))
+              (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ [
+                (pkgs.tree-sitter.buildGrammar {
+                  language = "todotxt";
+                  version = "c82b0a6c";
+                  src = pkgs.fetchFromSourcehut {
+                    owner = "~rogeruiz";
+                    repo = "tree-sitter-todotxt";
+                    rev = "c82b0a6c046f86e84ce156be70096ae4ce451777";
+                    hash = "sha256-jgYm+ME6HsJNDggV6Co167cF0baTUodtF/LYGjp50Do=";
+                  };
+                })
+              ]))
             ];
             llm = with pkgs.vimPlugins; [
               avante-nvim
@@ -382,8 +386,6 @@
               vim-matchup
               trouble-nvim
               todo-comments-nvim
-
-              todo-txt-vim
 
               nvim-ufo
               promise-async

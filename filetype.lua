@@ -39,6 +39,6 @@ vim.cmd([[
   au BufNewFile,BufRead .env* set ft=sh
   au BufNewFile,BufRead Brewfile set ft=ruby
   au BufNewFile,BufRead sketchybarrc set ft=sh
-  au BufRead,BufNewFile todo.txt set ft=todo
-  au BufRead,BufNewFile *.todo set ft=todo
+  au BufRead,BufNewFile todo.txt set ft=todotxt
+  au BufRead,BufNewFile *.todo set ft=todotxt
 ]])
