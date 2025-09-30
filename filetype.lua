@@ -31,8 +31,6 @@ vim.cmd([[
   au BufNewFile,BufRead *.twig set ft=html.twig
   au BufNewFile,BufRead *.hbs set ft=html
   au BufNewFile,BufRead *.toml set ft=toml
-  " au BufNewFile,BufRead *.js set ft=javascript
-  " au BufNewFile,BufRead *.jsx set ft=javascript
   au BufNewFile,BufRead nginx.config set ft=nginx
   au BufRead,BufNewFile spec set ft=yaml
   au BufNewFile,BufRead *.ledger set ft=ledger

@@ -130,10 +130,6 @@ require('lze').load {
     end,
   },
   {
-    "todo.txt-vim",
-    for_cat = 'general.extra',
-  },
-  {
     "avante.nvim",
     for_cat = "general.llm",
     load = function(name)
@@ -159,7 +155,7 @@ require('lze').load {
           enabled = false,
         },
         suggestion = {
-          auto_trigger = false,
+          auto_trigger = true,
           hide_during_completion = false,
           keymap = {
             accept = '<Tab>',

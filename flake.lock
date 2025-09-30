@@ -272,6 +272,22 @@
         "type": "github"
       }
     },
+    "plugins-tiny-glimmer-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757017180,
+        "narHash": "sha256-6vXvg7vgIVcLhtyvJwkzOkeChoTXyMEDvb7LPFgPIRU=",
+        "owner": "rachartier",
+        "repo": "tiny-glimmer.nvim",
+        "rev": "84f6b0d8d83b098141e67072ef8f2606820a4454",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rachartier",
+        "repo": "tiny-glimmer.nvim",
+        "type": "github"
+      }
+    },
     "plugins-vim-marked": {
       "flake": false,
       "locked": {
@@ -308,6 +324,7 @@
         "plugins-luasnip": "plugins-luasnip",
         "plugins-nvim-dap-powershell": "plugins-nvim-dap-powershell",
         "plugins-powershell-nvim": "plugins-powershell-nvim",
+        "plugins-tiny-glimmer-nvim": "plugins-tiny-glimmer-nvim",
         "plugins-vim-marked": "plugins-vim-marked"
       }
     }

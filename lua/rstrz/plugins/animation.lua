@@ -7,51 +7,60 @@ return {
     after = function()
       require('tiny-glimmer').setup({
         enabled = true,
+        overwrite = {
+          yank = {
+            enable = true,
+            default_animation = "rainbow",
+          },
+          search = {
+            enabled = true,
+            default_animation = "pulse",
+            next_mapping = "n",
+            prev_mapping = "N",
+          },
+          paste = {
+            enabled = true,
+            default_animation = "reverse_fade",
+
+            -- Keys to paste
+            paste_mapping = "p",
+
+            -- Keys to paste above the cursor
+            Paste_mapping = "P",
+          },
+          undo = {
+            enabled = true,
+
+            default_animation = {
+              name = "fade",
+
+              settings = {
+                from_color = "DiffDelete",
+
+                max_duration = 500,
+                min_duration = 500,
+              },
+            },
+            undo_mapping = "u",
+          },
+          redo = {
+            enabled = true,
+
+            default_animation = {
+              name = "fade",
+
+              settings = {
+                from_color = "DiffAdd",
+
+                max_duration = 500,
+                min_duration = 500,
+              },
+            },
+
+            redo_mapping = "<c-r>",
+          },
+        },
       })
     end
   },
-  {
-    'smoothcursor-nvim',
-    for_cat = "general.anime",
-    event = "UIEnter",
-    lazy = false,
-    after = function()
-      require('smoothcursor').setup({})
-    end
-  },
-  {
-    'nvim-luxmotion',
-    for_cat = "general.anime",
-    event = "UIEnter",
-    lazy = false,
-    after = function()
-      require('luxmotion').setup({})
-    end
-
-  },
-  {
-    'specs.nvim',
-    for_cat = "general.anime",
-    event = "UIEnter",
-    lazy = false,
-    after = function()
-      require('specs').setup {
-        show_jumps       = true,
-        min_jump         = 30,
-        popup            = {
-          delay_ms = 0, -- delay before popup displays
-          inc_ms = 10,  -- time increments used for fade/resize effects
-          blend = 10,   -- starting blend, between 0-100 (fully transparent), see :h winblend
-          width = 10,
-          winhl = "PMenu",
-          fader = require('specs').linear_fader,
-          resizer = require('specs').shrink_resizer
-        },
-        ignore_filetypes = {},
-        ignore_buftypes  = {
-          nofile = true,
-        },
-      }
-    end
-  }
 }

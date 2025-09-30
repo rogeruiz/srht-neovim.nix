@@ -32,3 +32,7 @@ dev *ARGS:
 [doc('Actualiza la ultima versión de `neovim-dev`')]
 upgrade-dev *ARGS:
     nix profile upgrade neovim-dev {{ ARGS }}
+
+[doc('Actualiza todo adentro de `flake.lock`')]
+update:
+    nix flake update --commit-lock-file

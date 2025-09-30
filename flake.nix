@@ -5,9 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
-    # No longer fetched to avoid forcing people to import it, but this remains here as a tutorial.
-    # How to import it into your config is shown farther down in the startupPlugins set.
-    # You put it here like this, and then below you would use it with `pkgs.neovimPlugins.hlargs`
+    # NOTE:
+    # en: Plugins build from source can be added in this section. They're
+    # referenced below as `pkgs.neovimPlugins.<name>` where `<name>` is the
+    # suffix after `plugins-`
+    # es: Los complementos se construyen de su fuente se aggregan en esta sección.
+    # Se refieren abajo con `pkgs.neovimPlugins.<nombre>` donde `<nombre>` es
+    # la segunda parte del nombre despues de `plugins-`.
 
     "plugins-hlargs" = {
       url = "github:m-demare/hlargs.nvim";
@@ -89,20 +93,20 @@
       flake = false;
     };
 
-    "plugins-smoothcursor-nvim" = {
-      url = "github:gen740/SmoothCursor.nvim";
-      flake = false;
-    };
-
+    # "plugins-smoothcursor-nvim" = {
+    #   url = "github:gen740/SmoothCursor.nvim";
+    #   flake = false;
+    # };
+    #
     "plugins-tiny-glimmer-nvim" = {
       url = "github:rachartier/tiny-glimmer.nvim";
       flake = false;
     };
-
-    "plugins-nvim-luxmotion" = {
-      url = "github:LuxVim/nvim-luxmotion";
-      flake = false;
-    };
+    #
+    # "plugins-nvim-luxmotion" = {
+    #   url = "github:LuxVim/nvim-luxmotion";
+    #   flake = false;
+    # };
 
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
@@ -110,7 +114,6 @@
 
   };
 
-  # see :help nixCats.flake.outputs
   outputs = { self, nixpkgs, ... }@inputs:
     let
       inherit (inputs.nixCats) utils;
@@ -119,7 +122,6 @@
       extra_pkg_config = {
         allowUnfree = true;
       };
-      # see :help nixCats.flake.outputs.overlays
       dependencyOverlays = /* (import ./overlays inputs) ++ */ [
         # This overlay grabs all the inputs named in the format
         # `plugins-<pluginName>`
@@ -159,8 +161,6 @@
             yaml-language-server
             marksman
 
-            # dwt1-shell-color-scripts
-            # pokemon-colorscripts-mac
             bottom
             gh
 
@@ -365,12 +365,12 @@
               toggleterm-nvim
               snacks-nvim
             ];
-            anime = with pkgs.vimPlugins; [
+            anime = [
               pkgs.neovimPlugins.tiny-glimmer-nvim
-              pkgs.neovimPlugins.smoothcursor-nvim
-              specs-nvim
-              smear-cursor-nvim
-              pkgs.neovimPlugins.nvim-luxmotion
+            #   pkgs.neovimPlugins.smoothcursor-nvim
+            #   specs-nvim
+            #   smear-cursor-nvim
+            #   pkgs.neovimPlugins.nvim-luxmotion
             ];
             extra = with pkgs.vimPlugins; [
               fidget-nvim
