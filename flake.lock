@@ -17,11 +17,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1758701979,
-        "narHash": "sha256-c7DUti3XM1aga8oVgaPnrVmEeCFtN9PaBxyNuqx8jPc=",
+        "lastModified": 1759070547,
+        "narHash": "sha256-JVZl8NaVRYb0+381nl7LvPE+A774/dRpif01FKLrYFQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e2642aa7d5a15eae586932a56f4294934f959c14",
+        "rev": "647e5c14cbd5067f44ac86b74f014962df460840",
         "type": "github"
       },
       "original": {
@@ -34,11 +34,11 @@
     "plugins-avante-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1758180146,
-        "narHash": "sha256-x2lb7k/qfERXYMdM+Upf6kmsYS3Qp9iz2KEvzvgb8P4=",
+        "lastModified": 1759223946,
+        "narHash": "sha256-0AGuE49h7ZCOwTRCuHeSsJwk7mTA/EgXl8eGUHfX9z4=",
         "owner": "yetone",
         "repo": "avante.nvim",
-        "rev": "44db8eba870f6c123da5efa70384b2889f3e3495",
+        "rev": "4c0493440b4ff00dcf71c112d7d607ae0a518210",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
     "plugins-github-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1758637693,
-        "narHash": "sha256-hnYSmqWtKmlewE0agGZZzxSpGU3bZZOJ/pWU6SiyaWQ=",
+        "lastModified": 1759192956,
+        "narHash": "sha256-7YquTg3DwdM5jOnkFg9xR3X/xono6/J6vqeMKTw2GAU=",
         "owner": "zbirenbaum",
         "repo": "copilot.lua",
-        "rev": "304fc5f2dadb5067ed26c60fa69fb7ba8a57eaf3",
+        "rev": "3cd5086c28c5769f5db147721f457a3e081de254",
         "type": "github"
       },
       "original": {
