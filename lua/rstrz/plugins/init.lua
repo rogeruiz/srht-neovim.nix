@@ -133,23 +133,17 @@ require('lze').load {
     "avante.nvim",
     for_cat = "general.llm",
     load = function(name)
-      vim.cmd.packadd(name)
       vim.cmd.packadd('nui.nvim')
       vim.cmd.packadd('mini.icons')
+      vim.cmd.packadd('github-copilot')
+      vim.cmd.packadd('render-markdown.nvim')
+      vim.cmd.packadd(name)
     end,
     after = function()
-      require("avante").setup({
-        provider = "copilot",
+      require('render-markdown').setup({
+        enabled = true,
+        file_types = { 'Avante' },
       })
-    end,
-  },
-  {
-    "github-copilot",
-    for_cat = 'general.extra',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    -- keys = "",
-    after = function(plugin)
       require('copilot').setup({
         panel = {
           enabled = false,
@@ -161,6 +155,13 @@ require('lze').load {
             accept = '<Tab>',
           },
         },
+      })
+      require("avante").setup({
+        provider = "copilot",
+        web_search_engine = { provider = "tavily" },
+        providers = { copilot = {} },
+        auto_suggestions_provider = "copilot",
+        auto_suggessions = { enabled = false },
       })
     end,
   },

@@ -345,6 +345,8 @@
               avante-nvim
               nui-nvim
               mini-icons
+              pkgs.neovimPlugins.github-copilot
+              render-markdown-nvim
             ];
             telescope = with pkgs.vimPlugins; [
               telescope-fzf-native-nvim
@@ -393,7 +395,6 @@
               # this would be how to add that plugin in your config.
               pkgs.neovimPlugins.hlargs
 
-              pkgs.neovimPlugins.github-copilot
             ];
           };
         };
