@@ -32,6 +32,10 @@ require('lze').load {
           python = { "ruff", "mypy" },
           markdown = { "prettierd" },
           css = { "prettierd" },
+          json = { "prettierd" },
+          html = { "prettierd" },
+          -- xml = { "xq" }, -- Not tested
+          yaml = { "prettierd" },
         },
       })
 
