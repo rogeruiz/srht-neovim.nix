@@ -21,6 +21,16 @@ return {
       vim.opt.runtimepath:prepend(parser_dir)
 
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.todotxt = {
+        install_info = {
+          url = "~/Developer/oss/rogeruiz/srht/tree-sitter-todotxt",
+          files = { "src/parser.c" },
+          branch = "main",
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+        filetype = "todotxt",
+      }
       parser_config.structurizr = {
         install_info = {
           url = "~/Developer/oss/rogeruiz/srht/tree-sitter-structurizr-dsl",
