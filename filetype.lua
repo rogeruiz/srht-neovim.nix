@@ -39,4 +39,5 @@ vim.cmd([[
   au BufNewFile,BufRead sketchybarrc set ft=sh
   au BufRead,BufNewFile todo.txt set ft=todotxt
   au BufRead,BufNewFile *.todo set ft=todotxt
+  au BufRead,BufNewFile *.dsl set ft=structurizr
 ]])

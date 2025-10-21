@@ -195,3 +195,12 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, sil
 -- Keymaps para aumentar la indentacíon
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
+
+
+-- Setup custom commentstrings for specific filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'structurizr',
+  callback = function()
+    vim.bo.commentstring = '// %s'
+  end,
+})

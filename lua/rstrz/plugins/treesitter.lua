@@ -19,6 +19,19 @@ return {
       -- Set a writable directory for parser installation to avoid Nix store permission issues
       local parser_dir = vim.fn.stdpath('data') .. '/treesitter-parsers'
       vim.opt.runtimepath:prepend(parser_dir)
+
+      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.structurizr = {
+        install_info = {
+          url = "~/Developer/oss/rogeruiz/srht/tree-sitter-structurizr-dsl",
+          files = { "src/parser.c" },
+          branch = "main",
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+        filetype = "structurizr",
+      }
+
       require('nvim-treesitter.configs').setup {
         parser_install_dir = parser_dir,
         highlight = {

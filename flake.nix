@@ -330,6 +330,16 @@
               nvim-treesitter-textobjects
               (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars ++ [
                 (pkgs.tree-sitter.buildGrammar {
+                  language = "structurizr";
+                  version = "f206a8db";
+                  src = pkgs.fetchFromSourcehut {
+                    owner = "~rogeruiz";
+                    repo = "tree-sitter-structurizr-dsl";
+                    rev = "f206a8db0b22ed5657450214ffb3196acad606d9";
+                    hash = "sha256-OzGEdGpkl3qgtmw1TZadvJnlHXsOccYiKXJmKTE9FCQ=";
+                  };
+                })
+                (pkgs.tree-sitter.buildGrammar {
                   language = "todotxt";
                   version = "c82b0a6c";
                   src = pkgs.fetchFromSourcehut {
