@@ -119,6 +119,7 @@ if nixCats('themer.catppuccin') then
         NotifyBackground                 = { bg = colors.mantle },
         -- Pa' Avante
         AvanteToBeDeletedWOStrikethrough = { fg = "#be1940", bg = "#e5a3b4" },
+        AvanteConflictIncoming           = { fg = "#429434", bg = "#b3d5af" },
         -- NeogitDiffDeleteHighlight xxx guifg=#be1940 guibg=#e5a3b4                                                                   │                            │
         -- NeogitDiffAddHighlight xxx guifg=#429434 guibg=#b3d5af
       }

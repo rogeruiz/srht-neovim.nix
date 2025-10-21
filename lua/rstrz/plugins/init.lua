@@ -159,7 +159,11 @@ require('lze').load {
       require("avante").setup({
         provider = "copilot",
         web_search_engine = { provider = "tavily" },
-        providers = { copilot = {} },
+        providers = {
+          copilot = {
+            model = "gpt-4.1",
+          }
+        },
         auto_suggestions_provider = "copilot",
         auto_suggessions = { enabled = false },
       })
