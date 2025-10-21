@@ -17,11 +17,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759632233,
-        "narHash": "sha256-krgZxGAIIIKFJS+UB0l8do3sYUDWJc75M72tepmVMzE=",
+        "lastModified": 1760965567,
+        "narHash": "sha256-0JDOal5P7xzzAibvD0yTE3ptyvoVOAL0rcELmDdtSKg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d7f52a7a640bc54c7bb414cca603835bf8dd4b10",
+        "rev": "cb82756ecc37fa623f8cf3e88854f9bf7f64af93",
         "type": "github"
       },
       "original": {
@@ -34,11 +34,11 @@
     "plugins-avante-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1759746110,
-        "narHash": "sha256-crtzBzRcpuqQdqymUJMAxky1Lfk+6YY0YifThHXz7Rw=",
+        "lastModified": 1761044633,
+        "narHash": "sha256-Rz1qemw/g1TBX6hA8px6dYHtQiQEcW5l6Jc5cd9Kldw=",
         "owner": "yetone",
         "repo": "avante.nvim",
-        "rev": "a7052aca0bdfb93e524f0536ac80e6c542962f47",
+        "rev": "3c3eca85181e3e7f466010251b09351dcfa4e043",
         "type": "github"
       },
       "original": {
@@ -98,11 +98,11 @@
     "plugins-blink-git": {
       "flake": false,
       "locked": {
-        "lastModified": 1758342604,
-        "narHash": "sha256-UNjruRRWilGh6qbVbKqZ9gdFGkAjpas3nlcGm3vzQQE=",
+        "lastModified": 1759993721,
+        "narHash": "sha256-zGXFZdID1ej8T1Knp4RpfJQ1uocw2GbOQEJbti6Pkhk=",
         "owner": "Kaiser-Yang",
         "repo": "blink-cmp-git",
-        "rev": "226b269a50b5ece2ed95933b8d62f103f5d6a05d",
+        "rev": "e3ad0ffaaa3b3b7e2158cc72cd6dad2d19842c46",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
     "plugins-github-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1759697885,
-        "narHash": "sha256-PwqJ7/FCfK4AqFgguZ2Tac5RWhehSEfI1N6ySSuTbZc=",
+        "lastModified": 1760726160,
+        "narHash": "sha256-LM7JFBhBQ9uSWODzVJYT29cT6ra5fLFz/5uoto4/K30=",
         "owner": "zbirenbaum",
         "repo": "copilot.lua",
-        "rev": "30b98a4c25d6152c14084020f703b6d56e1f1122",
+        "rev": "3123983d00ae6859f8bc987d14ebb524bb41b618",
         "type": "github"
       },
       "original": {
@@ -259,11 +259,11 @@
     "plugins-powershell-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1758638668,
-        "narHash": "sha256-BtBSvmbYJOCrkt/qmkPK99KYuDWLC6YB1ctPeE7VBwQ=",
+        "lastModified": 1760385429,
+        "narHash": "sha256-e0AYxwXJwsHIWghFh2ACtIh8H2250Nu016TlAB5SM18=",
         "owner": "TheLeoP",
         "repo": "powershell.nvim",
-        "rev": "f6162c810ed2c3fef618b5b44ef29327f746bd4e",
+        "rev": "62c589a2fe4c0cf77e8757df1c6c72bfa72c81ed",
         "type": "github"
       },
       "original": {
