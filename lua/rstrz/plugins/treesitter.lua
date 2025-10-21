@@ -13,13 +13,14 @@ return {
       vim.cmd.packadd(name)
       vim.cmd.packadd("nvim-treesitter-textobjects")
     end,
-    after = function(plugin)
+    after = function()
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       -- Set a writable directory for parser installation to avoid Nix store permission issues
       local parser_dir = vim.fn.stdpath('data') .. '/treesitter-parsers'
       vim.opt.runtimepath:prepend(parser_dir)
 
+      ---@class parser_config
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
       parser_config.todotxt = {
         install_info = {
