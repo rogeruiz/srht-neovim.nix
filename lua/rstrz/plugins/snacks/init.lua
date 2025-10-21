@@ -1,9 +1,9 @@
 return {
   'snacks.nvim',
   for_cat = "general.always",
-  event = "UIEnter",
+  event = "VimEnter",
   lazy = false,
-  load = function (name)
+  load = function(name)
     vim.cmd.packadd(name)
     vim.cmd.packadd("alpha-nvim")
   end,
