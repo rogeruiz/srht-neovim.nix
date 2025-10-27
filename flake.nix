@@ -143,7 +143,22 @@
           mkPlugin,
           ...
         }@packageDef:
-        {
+        rec {
+
+          # Save kalula grammar build for reuse
+          kalula_http-ts-grammar = pkgs.tree-sitter.buildGrammar {
+            language = "kulala_http";
+            version = "5.3.1";
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "mistweaverco";
+                repo = "kulala.nvim";
+                rev = "9a9308b664f71159f1c150e8cfb18541b143a9e9";
+                hash = "sha256-fChsMhTgne97vHvJzKAxBbM3OO1AZLE4b2TCrY2xL+4=";
+              }
+              + "/lua/tree-sitter";
+          };
+
           # to define and use a new category, simply add a new list to a set here,
           # and later, you will include categoryname = true; in the set you
           # provide when you build the package using this builder function.
@@ -354,6 +369,7 @@
                         hash = "sha256-jgYm+ME6HsJNDggV6Co167cF0baTUodtF/LYGjp50Do=";
                       };
                     })
+                    (kalula_http-ts-grammar)
                   ]
                 ))
               ];
@@ -412,6 +428,9 @@
                 pkgs.neovimPlugins.hlargs
 
               ];
+              kulala = with pkgs.vimPlugins; [
+                kulala-nvim
+              ];
             };
           };
 
@@ -441,6 +460,11 @@
             };
             pwsh = {
               POWERSHELL_EDITOR_SERVICES_BUNDLE_PATH = "${pkgs.powershell-editor-services}";
+            };
+            kulala = {
+              KULALA_CURL_PATH = "${pkgs.curl}/bin/curl";
+              KULALA_OPENSSL_PATH = "${pkgs.openssl}/bin/openssl";
+              KULALA_HTTP_TS_GRAMMAR_PATH = "${kalula_http-ts-grammar}";
             };
           };
 
@@ -602,8 +626,9 @@
               format = true;
               test = true;
               debug = true;
-              go = true; # <- disabled but you could enable it with override or module on install
+              go = true;
               pwsh = true;
+              kulala = true;
               python = true;
               rust = true;
               database = true;

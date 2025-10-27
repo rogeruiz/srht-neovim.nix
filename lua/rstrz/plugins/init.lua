@@ -71,6 +71,7 @@ require('lze').load {
   { import = "rstrz.plugins.ufo", },
   { import = "rstrz.plugins.trouble", },
   { import = "rstrz.plugins.todo-comments", },
+  { import = "rstrz.plugins.kulala", },
   {
     "vim-marked",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,

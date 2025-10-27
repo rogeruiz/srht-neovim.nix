@@ -42,6 +42,16 @@ return {
         },
         filetype = "structurizr",
       }
+      parser_config.kulala_http = {
+        install_info = {
+          url = vim.env.KULALA_HTTP_TS_GRAMMAR_PATH,
+          files = { "src/parser.c" },
+          branch = "main",
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+        filetype = { "http", "rest" },
+      }
 
       require('nvim-treesitter.configs').setup {
         parser_install_dir = parser_dir,
