@@ -11,6 +11,9 @@ return {
       openssl_path = vim.env.KULALA_OPENSSL_PATH,
       global_keymaps_prefix = "<leader>R",
       global_keymaps = true,
+      ui = {
+        max_response_size = 5120 * 1024, -- 5 MB
+      }
     })
   end,
 }
